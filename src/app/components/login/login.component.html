@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Slide Navbar</title>
+<link rel="stylesheet" type="text/css" href="login.component.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">BRINKEDIN</label>
+					<input type="text" name="txt" placeholder="Nome" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+          <input type="text" name="broj" placeholder="Candidato ou Recrutador" required="">
+					<input type="password" name="pswd" placeholder="Senha" required="">
+					<button>Cadastrar-se</button>
+				</form>
+			</div>
+
+
+    <div class="login">
+    <form (ngSubmit)="login()">
+      <label for="chk" aria-hidden="true">Login</label>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+      <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+      <input type="text" [(ngModel)]="perfil" name="perfil" placeholder="Candidato ou Recrutador" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+
+
+	</div>
+
+
+
+
+
+</body>
+</html>
