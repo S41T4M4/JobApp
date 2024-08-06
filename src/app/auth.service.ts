@@ -1,19 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7083/api/v1/auth'; // URL da sua API com a versão
+  private apiUrl = 'https://localhost:7083/api/v1';
 
   constructor(private http: HttpClient) { }
 
   login(email: string, senha: string, perfil: string): Observable<any> {
     const loginViewModel = { email, senha, perfil };
-    return this.http.post<any>(`${this.apiUrl}/login`, loginViewModel);
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, loginViewModel).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('perfil', response.perfil);
+      })
+    );
   }
 
+
+  getVagas(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/vagas`);
+  }
+
+  getVagasAbertas(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/status/aberta`);
+  }
+  getVagasFechadas(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/status/fechada`);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('perfil');
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  getPerfil(): string | null {
+    return localStorage.getItem('perfil');
+  }
 
 }

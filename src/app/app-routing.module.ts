@@ -1,12 +1,21 @@
+import { RecrutadorGuard } from './_guard/recrutador.guard';
+import { CandidatoGuard } from './_guard/candidato.guard';
+import { AuthGuard } from './_guard/autorizado.guard';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes,RouterOutlet} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardRecrutadorComponent } from './components/dashboard-recrutador/dashboard-recrutador.component';
+import { DashboardCandidatoComponent } from './components/dashboard-candidato/dashboard-candidato.component';
+
+
+
 
 const routes: Routes = [
-  { path: 'dashboard-recrutador', component: DashboardRecrutadorComponent },
-  { path: '', redirectTo: '/dashboard-recrutador', pathMatch: 'full' },
-  // outras rotas
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard-recrutador', component: DashboardRecrutadorComponent, canActivate: [AuthGuard, RecrutadorGuard] },
+  { path: 'dashboard-candidato', component: DashboardCandidatoComponent, canActivate: [AuthGuard, CandidatoGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
@@ -14,3 +23,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

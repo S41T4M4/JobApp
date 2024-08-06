@@ -1,0 +1,24 @@
+<div>
+
+  <ul *ngFor="let vaga of vagas">
+    <li>{{ vaga.titulo }}</li>
+    <li>{{vaga.descricao}}</li>
+    <li>{{vaga.requisitos}}</li>
+    <li>R${{vaga.salario}}.000</li>
+    <li>{{vaga.localizacao}}</li>
+    <li>{{vaga.status}}</li>
+
+
+  </ul>
+  <ul *ngFor="let vagas of vagasFechadas">
+    <li>{{ vagas.titulo }}</li>
+    <li>{{vagas.descricao}}</li>
+    <li>{{vagas.requisitos}}</li>
+    <li>R${{vagas.salario}}.000</li>
+    <li>{{vagas.localizacao}}</li>
+    <li>{{vagas.status}}</li>
+
+  </ul>
+
+</div>
+
