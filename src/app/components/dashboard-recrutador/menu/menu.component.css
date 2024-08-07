@@ -1,0 +1,45 @@
+.navibar {
+  background-color: #427cd2;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaça os itens para as extremidades */
+}
+
+.navbar-container {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* Centraliza os itens dentro deste contêiner */
+}
+
+.redirecting {
+  color: #fff;
+}
+
+#jobs {
+  background-color: #427cd2;
+  color: #fff;
+}
+
+#home {
+  background-color: #427cd2;
+  color: white;
+}
+
+#home img {
+  height: 44px;
+}
+
+#home img:hover {
+  height: 48px;
+}
+
+#jobs img {
+  height: 44px;
+  width: auto;
+}
+
+#jobs img:hover {
+  height: 48px;
+  width: auto;
+}

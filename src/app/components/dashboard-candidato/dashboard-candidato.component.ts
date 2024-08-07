@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+
 import { AuthService } from '../../auth.service';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-candidato',
   templateUrl: './dashboard-candidato.component.html',
-  styleUrl: './dashboard-candidato.component.css'
+  styleUrl: './dashboard-candidato.component.css',
+
 })
 export class DashboardCandidatoComponent {
   vagas: any[] = [];
@@ -36,5 +38,8 @@ export class DashboardCandidatoComponent {
       }
     );
   }
+
+
+
 }
 

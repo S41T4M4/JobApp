@@ -2,6 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCommonModule } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-root',

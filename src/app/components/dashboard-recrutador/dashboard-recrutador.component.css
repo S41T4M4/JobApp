@@ -1,0 +1,76 @@
+.postagem-card {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color:rgb(241, 253, 255);
+
+}
+
+.mat-card-header {
+  display: flex;
+  align-items: center;
+}
+
+.mat-card-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mat-divider {
+  margin: 10px 0;
+}
+
+mat-card-footer {
+  text-align: center;
+  font-size: 0.875em;
+  color: rgb(73, 73, 73);
+}
+
+.button-group {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+}
+
+button img {
+  height: 24px;
+  width: auto;
+  margin-right: 8px;
+}
+
+
+#edit-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+#view-button {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+
+#edit-button:hover {
+  background-color: #0056b3;
+}
+
+#delete-button:hover {
+  background-color: #a30514;
+}
+
+#view-button:hover {
+  background-color: #5a6268;
+}

@@ -1,0 +1,20 @@
+<mat-toolbar class="navibar">
+  <mat-toolbar-row>
+    <!-- Link para "My Jobs" alinhado à esquerda -->
+    <span>
+      <a id="jobs" routerLink="/management-jobs">
+        <img src="/job.png" alt="Job" />
+      </a>
+    </span>
+
+    <!-- Contêiner centralizado para o link "Home" -->
+    <span class="navbar-container">
+      <a id="home" routerLink="/dashboard-recrutador">
+        <img src="/home.png" alt="Home" />
+      </a>
+    </span>
+
+    <mat-menu #menu="matMenu">
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
