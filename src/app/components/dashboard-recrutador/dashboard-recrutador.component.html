@@ -1,4 +1,11 @@
 <app-menu></app-menu>
+<div class="void">
+  dasdad
+</div>
+<div class="void2">
+  asdasdasdsdsad<br>
+  asdadsds
+</div>
 <div *ngIf="isLoading">...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">
@@ -14,11 +21,11 @@
       <p>{{ vaga.requisitos }}</p>
       <p>Salário: R${{ vaga.salario }}</p>
       <div class="button-group">
-        <button id="edit-button" mat-raised-button color="primary">
+        <button id="edit-button" mat-raised-button color="primary" (click)="editVaga(vaga)">
           <img src="/edit.png" alt="Edit" />
           Editar
         </button>
-        <button id="delete-button" mat-raised-button color="primary">
+        <button id="delete-button" mat-raised-button color="primary" (click)="deleteVaga(vaga.id)">
           <img src="/delete.png" alt="Delete" />
           Excluir
         </button>
@@ -33,3 +40,4 @@
     </mat-card-footer>
   </mat-card>
 </div>
+

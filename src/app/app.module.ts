@@ -16,6 +16,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MenuComponent } from './components/dashboard-recrutador/menu/menu.component';
 import { ManagementJobsComponent } from './components/dashboard-recrutador/management-jobs/management-jobs.component';
 import {MatTableModule} from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/candidatos-em-vagas/candidatos-em-vagas.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     DashboardCandidatoComponent,
     MenuComponent,
     ManagementJobsComponent,
+    CandidatosEmVagasComponent,
 
   ],
   imports: [
@@ -37,7 +43,11 @@ import {MatTableModule} from '@angular/material/table';
     MatDividerModule,
     MatMenuModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -7,4 +7,7 @@ export interface Vaga {
   localizacao: string;
   status: string;
   id_recrutador: number;
+
 }
+
+

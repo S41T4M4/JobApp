@@ -1,11 +1,115 @@
-.example-container {
+/* Estilos Gerais */
+body {
+  font-family: 'Roboto', sans-serif; /* Define a fonte padrão */
+}
+#title{
+  font-size: 24px;
+}
+.create{
   display: flex;
-  flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px;
+}
+.title{
+  font-size: 24px;
+  text-align: center;
+
+
+}
+.create:hover{
+  background-color: #f0f0f0;
+
 }
 
-.mat-table {
-  overflow: auto;
-  max-height: 500px;
+.container {
+  max-width: 600px;
+  margin: 0 auto; /* Centraliza o contêiner */
+  padding: 6px;
+  background-color: #1da9ea;
+  border: 1px solid #000000;
 }
+
+mat-form-field {
+  width: 100%;
+  border: 1px solid;
+  background-color: aliceblue;
+  margin-bottom: 16px;
+}
+
+/* Estilos para campos de formulário */
+mat-form-field .mat-form-field-flex {
+  border-radius: 4px;
+}
+
+mat-form-field .mat-form-field-infix {
+  padding: 6px;
+}
+
+
+mat-label {
+  color: #000000;
+}
+
+
+input.mat-input-element {
+  font-size: 14px;
+}
+
+
+mat-select {
+  width: 100%;
+  padding: 1px;
+}
+
+mat-option {
+  font-size: 12px;
+}
+
+
+button.mat-raised-button {
+  background-color: #3f51b5;
+  color: white;
+  margin-right: 8px;
+}
+
+button.mat-raised-button:hover {
+  background-color: #303f9f;
+}
+
+
+button#submit-button {
+  background-color: #4caf50;
+}
+
+button#cancel-button {
+  background-color: #f44336;
+}
+
+button#submit-button:hover {
+  background-color: #388e3c;
+}
+
+button#cancel-button:hover {
+  background-color: #c62828;
+}
+
+
+.mat-form-field .mat-form-field-underline {
+  background-color: #f44336;
+}
+
+.mat-form-field .mat-form-field-label {
+  color: #f44336;
+}
+
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+

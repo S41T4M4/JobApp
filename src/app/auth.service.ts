@@ -13,12 +13,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, senha: string, perfil: string): Observable<any> {
-    const loginViewModel = { email, senha, perfil };
+  login(email: string, senha: string, perfil: string, id : number): Observable<any> {
+    const loginViewModel = { email, senha, perfil, id };
     return this.http.post<any>(`${this.apiUrl}/auth/login`, loginViewModel).pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('perfil', response.perfil);
+        localStorage.setItem('id', response.id);
       })
     );
   }
@@ -41,8 +42,8 @@ export class AuthService {
   postVagas(vaga: Vaga): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}/jobApplication/vagas`, vaga);
   }
-  getVagasByRecrutador():Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/1`);
+  getVagasByRecrutador(id: number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/${id}`);
   }
 
   logout() {
@@ -58,7 +59,7 @@ export class AuthService {
     return localStorage.getItem('perfil');
   }
    deleteVagas(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/vagas/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/jobApplication/vagas/${id}`);
   }
     updateVagas(id: number, vaga: Vaga): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/vagas/${id}`, vaga);

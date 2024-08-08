@@ -12,6 +12,7 @@ export class LoginComponent {
   email: string = '';
   senha: string = '';
   perfil: string = '';
+  id: number = 0;
 
 
 
@@ -19,7 +20,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   login() {
-    this.authService.login(this.email, this.senha, this.perfil).subscribe(response => {
+    this.authService.login(this.email, this.senha, this.perfil, this.id).subscribe(response => {
       console.log('Login bem-sucedido:', response);
 
       if (response.perfil === 'Recrutador') {

@@ -20,18 +20,18 @@ export class DashboardRecrutadorComponent implements OnInit {
     localizacao: '',
     status: '',
     id_recrutador: 0,
-  };
-  id_recrutador = 0 ;
 
+  };
+aberta = this.tempVaga.status;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
-      this.loadVagas();
+    this.loadVagas();
   }
 
   loadVagas(): void {
-    this.authService.getVagasByRecrutador().subscribe(
+    const recruiterId = Number(localStorage.getItem('id')); // Obtém o ID do recrutador do localStorage
+    this.authService.getVagasByRecrutador(recruiterId).subscribe(
       (data: Vaga[]) => {
         this.vagas = data;
         this.isLoading = false;
@@ -74,15 +74,19 @@ export class DashboardRecrutadorComponent implements OnInit {
     }
   }
 
+
   deleteVaga(id: number): void {
-    this.authService.deleteVagas(id).subscribe(
-      () => {
-        this.loadVagas(); // Recarregar a lista de vagas
-      },
-      (error) => {
-        console.error('Erro ao excluir vaga', error);
-      }
-    );
+    if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
+      this.authService.deleteVagas(id).subscribe(
+        () => {
+          this.vagas = this.vagas.filter(v => v.id !== id); // Remove a vaga da lista local
+          console.log('Vaga excluida com sucesso !');
+        },
+        (error) => {
+          console.error('Erro ao excluir vaga', error);
+        }
+      );
+    }
   }
 
   resetForm(): void {

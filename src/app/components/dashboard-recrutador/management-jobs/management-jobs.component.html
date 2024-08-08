@@ -1,12 +1,55 @@
-<div class="container">
-  <div class="row">
-    <tr *ngFor="let vaga of vagas">
-      <th>
-        {{vaga.titulo}}
-        {{vaga.status}}
-
-      </th>
-
-    </tr>
-  </div>
+<app-menu></app-menu>
+<div class="void">
+  daasds<br>
+  dasdads<br>
+  dadsada<br>
+  dasdasdasd<br>
+  <br>
 </div>
+
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title id ="title"></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="vagaForm" (ngSubmit)="addVaga()">
+      <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input matInput id="titulo" formControlName="titulo" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput id="descricao" formControlName="descricao"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Requisitos</mat-label>
+        <input matInput id="requisitos" formControlName="requisitos" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Salário</mat-label>
+        <input matInput id="salario" formControlName="salario" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Localização</mat-label>
+        <input matInput id="localizacao" formControlName="localizacao" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select id="status" formControlName="status">
+          <mat-option value="Aberta">Aberta</mat-option>
+          <mat-option value="Fechada">Fechada</mat-option>
+        </mat-select>
+      </mat-form-field>
+     <div>
+      <button mat-raised-button class="create" type="submit" [disabled]="vagaForm.invalid">
+        <img class="create" src="/add.png" alt="add">
+      </button>
+     </div>
+    </form>
+  </mat-card-content>
+</mat-card>
