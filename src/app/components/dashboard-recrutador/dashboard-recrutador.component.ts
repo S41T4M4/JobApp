@@ -22,7 +22,7 @@ export class DashboardRecrutadorComponent implements OnInit {
     id_recrutador: 0,
 
   };
-aberta = this.tempVaga.status;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

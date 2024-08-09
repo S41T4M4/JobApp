@@ -64,6 +64,9 @@ export class AuthService {
     updateVagas(id: number, vaga: Vaga): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/vagas/${id}`, vaga);
   }
+  getCandidatosByRecrutador(id_recrutador : number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/recrutador/${id_recrutador}`);
+  }
 
 
 

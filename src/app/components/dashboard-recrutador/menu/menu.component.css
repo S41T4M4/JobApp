@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed; /* Mantém a barra de navegação fixa no topo */
-  top: 0; /* Fixa no topo */
-  width: 100%; /* Ocupa toda a largura da tela */
-  z-index: 999; /* Garante que a barra fique acima de outros elementos */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .navbar-container {

@@ -3,11 +3,10 @@ export interface Vaga {
   titulo: string;
   descricao: string;
   requisitos: string;
-  salario: number; // Corrigido para number
+  salario: number;
   localizacao: string;
   status: string;
   id_recrutador: number;
-
 }
 
 

@@ -1,1 +1,31 @@
-<p>candidatos-em-vagas works!</p>
+<div *ngIf="isLoading">Carregando candidatos...</div>
+<div *ngIf="!isLoading && candidatos.length === 0">Nenhum candidato encontrado para as suas vagas.</div>
+<div *ngIf="!isLoading && candidatos.length > 0">
+  <mat-card *ngFor="let candidato of candidatos" class="candidato-card">
+    <mat-card-header>
+
+      <mat-card-title><strong>{{candidato.titulo_vagas}}</strong></mat-card-title>
+</mat-card-header>
+
+    <mat-card-content>
+       <mat-card-title>Candidato  {{ candidato.nome_candidato }}</mat-card-title>
+
+      <mat-card-subtitle>Contato: {{candidato.email_candidato}}</mat-card-subtitle>
+
+      <mat-card-subtitle>Status: {{ candidato.status }}</mat-card-subtitle>
+
+
+
+    </mat-card-content>
+    <mat-card-footer>
+              <button>
+      Aprovar
+     </button>
+     <button>
+      reprovar
+     </button>
+    </mat-card-footer>
+
+  </mat-card>
+</div>
+
