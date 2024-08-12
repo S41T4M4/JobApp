@@ -8,6 +8,8 @@ import { DashboardRecrutadorComponent } from './components/dashboard-recrutador/
 import { DashboardCandidatoComponent } from './components/dashboard-candidato/dashboard-candidato.component';
 import { ManagementJobsComponent } from './components/dashboard-recrutador/management-jobs/management-jobs.component';
 import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/candidatos-em-vagas/candidatos-em-vagas.component';
+import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-aplicadas/vagas-aplicadas.component';
+
 
 
 
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'dashboard-candidato', component: DashboardCandidatoComponent, canActivate: [AuthGuard, CandidatoGuard] },
   { path: 'management-jobs', component: ManagementJobsComponent},
   { path: 'candidatos-em-vagas', component: CandidatosEmVagasComponent},
+  {path : 'vagas-aplicadas', component : VagasAplicadasComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 

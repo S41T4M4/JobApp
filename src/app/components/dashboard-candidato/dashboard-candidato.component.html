@@ -1,3 +1,26 @@
-<div>
-
+<app-menu-vagas></app-menu-vagas>
+<div *ngIf="isLoading">Carregando...</div>
+<div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
+<div *ngIf="!isLoading && vagas.length > 0">
+  <mat-card *ngFor="let vaga of vagas" class="postagem-card">
+    <mat-card-header>
+      <mat-card-title>{{ vaga.titulo }}</mat-card-title>
+      <mat-card-subtitle>Status: {{ vaga.status }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ vaga.descricao }}</p>
+      <mat-divider></mat-divider>
+      <h2>Requisitos</h2>
+      <p>{{ vaga.requisitos }}</p>
+      <p>Salário: R${{ vaga.salario }}</p>
+      <div class="button-group">
+        <button id="apply-button" >
+          Candidatar
+        </button>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <p>{{ vaga.localizacao }}</p>
+    </mat-card-footer>
+  </mat-card>
 </div>

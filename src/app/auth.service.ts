@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Vaga } from './vaga.model';
+import { Candidatura } from './candidaturas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -61,14 +62,21 @@ export class AuthService {
    deleteVagas(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/jobApplication/vagas/${id}`);
   }
-    updateVagas(id: number, vaga: Vaga): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/vagas/${id}`, vaga);
-  }
+
   getCandidatosByRecrutador(id_recrutador : number): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/jobApplication/recrutador/${id_recrutador}`);
   }
-
-
-
+ updateStatusCandidatura(id: number, status: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/jobApplication/candidaturas/status/${id}`, { id, status });
+  }
+updateVagas(id: number, vaga: Vaga): Observable<any> {
+  return this.http.put(`${this.apiUrl}/jobApplication/vagas/${id}`, vaga);
+}
+getCandidaturasByIdCandidato(id_candidato :number) : Observable<any>{
+  return this.http.get<any>(`${this.apiUrl}/jobApplication/candidaturasPorCandidato/${id_candidato}`);
+}
+postCandidatura(candidatura : Candidatura) : Observable<any>{
+  return this.http.post<any>(`${this.apiUrl}/jobApplication/candidaturas`, candidatura);
+}
 
 }

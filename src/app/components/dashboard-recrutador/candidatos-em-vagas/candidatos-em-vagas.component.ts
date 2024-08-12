@@ -2,7 +2,6 @@ import { Candidatura } from './../../../candidaturas.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth.service';
 
-
 @Component({
   selector: 'app-candidatos-em-vagas',
   templateUrl: './candidatos-em-vagas.component.html',
@@ -11,7 +10,6 @@ import { AuthService } from '../../../auth.service';
 export class CandidatosEmVagasComponent implements OnInit {
   candidatos: Candidatura[] = [];
   isLoading: boolean = true;
-
 
   constructor(private authService: AuthService) {}
 
@@ -29,6 +27,22 @@ export class CandidatosEmVagasComponent implements OnInit {
       (error) => {
         console.error('Erro ao carregar candidatos', error);
         this.isLoading = false;
+      }
+    );
+  }
+
+  // Função para alterar o status da candidatura
+  alterarStatus(idCandidatura: number, novoStatus: string): void {
+    this.authService.updateStatusCandidatura(idCandidatura, novoStatus).subscribe(
+      () => {
+        // Atualiza o status localmente para refletir a mudança na UI
+        const candidatura = this.candidatos.find(c => c.id === idCandidatura);
+        if (candidatura) {
+          candidatura.status = novoStatus;
+        }
+      },
+      (error) => {
+        console.error('Erro ao alterar status da candidatura', error);
       }
     );
   }

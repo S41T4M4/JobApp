@@ -67,6 +67,9 @@ button img {
 #delete-button {
   background-color: #dc3545;
 }
+#cancel-edit{
+  background-color:  #dc3545;
+}
 
 #view-button {
   background-color: #6c757d;
@@ -82,4 +85,7 @@ button img {
 
 #view-button:hover {
   background-color: #5a6268;
+}
+#save-button{
+  background-color: #28a745;
 }

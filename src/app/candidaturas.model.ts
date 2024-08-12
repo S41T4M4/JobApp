@@ -5,15 +5,16 @@ export interface Candidatura {
   nome_candidato: string | null;
   email_candidato:string;
   titulo_vagas:string;
-  isEditing?: boolean;
-   // Nome do candidato, pode ser null se não disponível
+
+
   status: string;
-  data_candidatura: string;  // ISO string para a data
+  data_candidatura: string;
 
   vaga: {
     id: number;
     titulo: string;
     descricao: string;
+    status: string;
   };
   candidato: {
     id: number;

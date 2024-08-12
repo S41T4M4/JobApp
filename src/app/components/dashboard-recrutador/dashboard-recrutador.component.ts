@@ -20,7 +20,6 @@ export class DashboardRecrutadorComponent implements OnInit {
     localizacao: '',
     status: '',
     id_recrutador: 0,
-
   };
 
   constructor(private authService: AuthService) { }
@@ -30,7 +29,7 @@ export class DashboardRecrutadorComponent implements OnInit {
   }
 
   loadVagas(): void {
-    const recruiterId = Number(localStorage.getItem('id')); // Obtém o ID do recrutador do localStorage
+    const recruiterId = Number(localStorage.getItem('id'));
     this.authService.getVagasByRecrutador(recruiterId).subscribe(
       (data: Vaga[]) => {
         this.vagas = data;
@@ -74,13 +73,12 @@ export class DashboardRecrutadorComponent implements OnInit {
     }
   }
 
-
   deleteVaga(id: number): void {
     if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
       this.authService.deleteVagas(id).subscribe(
         () => {
           this.vagas = this.vagas.filter(v => v.id !== id); // Remove a vaga da lista local
-          console.log('Vaga excluida com sucesso !');
+          console.log('Vaga excluída com sucesso!');
         },
         (error) => {
           console.error('Erro ao excluir vaga', error);

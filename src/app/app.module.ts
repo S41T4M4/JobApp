@@ -21,6 +21,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/candidatos-em-vagas/candidatos-em-vagas.component';
+import { MenuVagasComponent } from './components/dashboard-candidato/menu-vagas/menu-vagas.component';
+import { MatIconModule } from '@angular/material/icon';
+import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-aplicadas/vagas-aplicadas.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/ca
     MenuComponent,
     ManagementJobsComponent,
     CandidatosEmVagasComponent,
+    MenuVagasComponent,
+    VagasAplicadasComponent,
+
 
   ],
   imports: [
@@ -47,7 +54,8 @@ import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/ca
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync()

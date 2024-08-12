@@ -1,44 +1,84 @@
 <app-menu></app-menu>
-<div class="void">
-  dasdad
-</div>
-<div class="void2">
-  asdasdasdsdsad<br>
-  asdadsds
-</div>
 <div *ngIf="isLoading">...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
-      <mat-card-title>{{ vaga.titulo }}</mat-card-title>
-      <mat-card-subtitle>Status: {{ vaga.status }}</mat-card-subtitle>
+      <mat-card-title>
+        <!-- Se estiver em modo de edição, mostra um campo de texto para o título -->
+        <span *ngIf="selectedVaga === vaga; else normalView">
+          <input [(ngModel)]="tempVaga.titulo" placeholder="Título" />
+        </span>
+        <ng-template #normalView>{{ vaga.titulo }}</ng-template>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Status:
+        <span *ngIf="selectedVaga === vaga; else statusView">
+          <select [(ngModel)]="tempVaga.status">
+            <option value="Aberta">Aberta</option>
+            <option value="Fechada">Fechada</option>
+          </select>
+        </span>
+        <ng-template #statusView>{{ vaga.status }}</ng-template>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{ vaga.descricao }}</p>
+      <p *ngIf="selectedVaga === vaga; else descView">
+        <textarea [(ngModel)]="tempVaga.descricao" placeholder="Descrição"></textarea>
+      </p>
+      <ng-template #descView>{{ vaga.descricao }}</ng-template>
+
       <mat-divider></mat-divider>
+
       <h2>Requisitos</h2>
-      <p>{{ vaga.requisitos }}</p>
-      <p>Salário: R${{ vaga.salario }}</p>
+      <p *ngIf="selectedVaga?.id !== vaga.id">{{ vaga.requisitos }}</p> <textarea *ngIf="selectedVaga?.id === vaga.id" [(ngModel)]="tempVaga.requisitos" placeholder="Requisitos"></textarea>
+
+
+
+      <!-- Campo de edição para salário -->
+      <p>Salário:
+        <span *ngIf="selectedVaga === vaga; else salarioView">
+          <input [(ngModel)]="tempVaga.salario" placeholder="Salário" />
+        </span>
+        <ng-template #salarioView>R${{ vaga.salario }}</ng-template>
+      </p>
+
+      <!-- Campo de edição para localização -->
+      <p>Localização:
+        <span *ngIf="selectedVaga === vaga; else localizacaoView">
+          <input [(ngModel)]="tempVaga.localizacao" placeholder="Localização" />
+        </span>
+        <ng-template #localizacaoView>{{ vaga.localizacao }}</ng-template>
+      </p>
+
       <div class="button-group">
-        <button id="edit-button" mat-raised-button color="primary" (click)="editVaga(vaga)">
-          <img src="/edit.png" alt="Edit" />
-          Editar
+        <!-- Botão de editar ou salvar -->
+        <button id="save-button" *ngIf="selectedVaga === vaga; else editButton" (click)="updateVaga()">
+          Salvar
         </button>
-        <button id="delete-button" mat-raised-button color="primary" (click)="deleteVaga(vaga.id)">
-          <img src="/delete.png" alt="Delete" />
-          Excluir
+        <ng-template #editButton>
+          <button id="edit-button"  (click)="editVaga(vaga)">
+            <img src="/edit.png" alt="Edit" />
+          </button>
+        </ng-template>
+
+        <!-- Botão de cancelar ou excluir -->
+        <button id="cancel-edit" *ngIf="selectedVaga === vaga; else deleteButton"  (click)="cancelEdit()">
+          Cancelar
         </button>
-        <button id="view-button">
+        <ng-template #deleteButton>
+          <button id="delete-button" (click)="deleteVaga(vaga.id)">
+            <img src="/delete.png" alt="Delete" />
+          </button>
+        </ng-template>
+
+        <!-- Botão de ver candidatos, ocultado no modo de edição -->
+        <button *ngIf="selectedVaga !== vaga" id="view-button">
           <a routerLink="/candidatos-em-vagas">
              <img src="/view.png" alt="View" />
           </a>
         </button>
       </div>
     </mat-card-content>
-    <mat-card-footer>
-      <p>Localização: {{ vaga.localizacao }}</p>
-    </mat-card-footer>
   </mat-card>
 </div>
-
