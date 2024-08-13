@@ -1,34 +1,26 @@
 .navibar {
-  background-color: #427cd2;
+  background-color: #ffffff;
   padding: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+
   top: 0;
   width: 100%;
-  z-index: 999;
+
 }
 
 .navbar-container {
   display: flex;
   flex: 1;
-  justify-content: center; /* Centraliza os itens dentro deste contêiner */
+  justify-content: center;
 }
 
 .redirecting {
-  color: #fff;
+  color: #000000;
 }
 
-#jobs {
-  background-color: #427cd2;
-  color: #fff;
-}
 
-#home {
-  background-color: #427cd2;
-  color: white;
-}
 
 #home img {
   height: 44px;

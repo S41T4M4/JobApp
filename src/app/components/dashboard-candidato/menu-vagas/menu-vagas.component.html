@@ -1,23 +1,17 @@
 <mat-toolbar color="primary" class="navbar">
-  <span class="navbar-title">Job Listing</span>
+  <span class="navbar-title">BRINK3D<strong id="strong">1N</strong></span>
+
   <span class="spacer"></span>
 
 
   <nav class="navbar-links">
-    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
-    <a mat-button routerLink="/vagas-aplicadas" routerLinkActive="active">Vagas Aplicadas</a>
+    <a mat-button routerLink="/dashboard-candidato" routerLinkActive="active">
+      <img id="home" src="/home.png">
+    </a>
+    <a mat-button routerLink="/vagas-aplicadas" routerLinkActive="active">
+      <img id="myApplied" src="/accept.png">
+    </a>
 
   </nav>
 
-  <!-- Hamburger menu for mobile screens -->
-  <button mat-icon-button class="menu-icon" (click)="toggleMenu()">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
 
-<!-- Dropdown menu for mobile -->
-<nav class="mobile-menu" [class.open]="menuOpen">
-  <a mat-button routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a>
-  <a mat-button routerLink="/vagas" routerLinkActive="active" (click)="closeMenu()">Vagas</a>
-
-</nav>

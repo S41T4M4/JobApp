@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Vaga } from './vaga.model';
 import { Candidatura } from './candidaturas.model';
+import { AplicarCandidatura } from './candidatura.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,8 +76,11 @@ updateVagas(id: number, vaga: Vaga): Observable<any> {
 getCandidaturasByIdCandidato(id_candidato :number) : Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/jobApplication/candidaturasPorCandidato/${id_candidato}`);
 }
-postCandidatura(candidatura : Candidatura) : Observable<any>{
-  return this.http.post<any>(`${this.apiUrl}/jobApplication/candidaturas`, candidatura);
-}
+  postCandidatura(candidatura: AplicarCandidatura): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/jobApplication/candidaturas`, candidatura);
+  }
+  deleteCandidatura(id : number) : Observable<any>{
+    return this.http.delete<any>(`${this.apiUrl}/jobApplication/candidaturas/${id}`);
+  }
 
 }

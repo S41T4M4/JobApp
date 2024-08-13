@@ -5,22 +5,35 @@
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
       <mat-card-title>{{ vaga.titulo }}</mat-card-title>
-      <mat-card-subtitle>Status: {{ vaga.status }}</mat-card-subtitle>
+
     </mat-card-header>
+
     <mat-card-content>
+      <h1>
+            Descrição
+      </h1>
+
       <p>{{ vaga.descricao }}</p>
       <mat-divider></mat-divider>
       <h2>Requisitos</h2>
       <p>{{ vaga.requisitos }}</p>
-      <p>Salário: R${{ vaga.salario }}</p>
+      <h2>Salário</h2>
+      <p>R${{ vaga.salario }}</p>
+
       <div class="button-group">
-        <button id="apply-button" >
-          Candidatar
-        </button>
+        <button id="apply-button" (click)="applyVaga(vaga.id)">
+            <img src="/job-application.png" alt="Apply Icon">
+
+       </button>
       </div>
+
     </mat-card-content>
+
     <mat-card-footer>
+      <mat-divider></mat-divider>
       <p>{{ vaga.localizacao }}</p>
+       <mat-card-subtitle>Vaga {{ vaga.status }}</mat-card-subtitle>
+
     </mat-card-footer>
   </mat-card>
 </div>

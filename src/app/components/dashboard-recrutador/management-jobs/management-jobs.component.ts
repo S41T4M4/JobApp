@@ -50,7 +50,7 @@ export class ManagementJobsComponent implements OnInit {
 
   addVaga(): void {
     if (this.vagaForm.valid) {
-      console.log('Dados da Vaga:', this.vagaForm.value);  // Verifique o que está sendo enviado
+      console.log('Dados da Vaga:', this.vagaForm.value);
       this.authService.postVagas(this.vagaForm.value).subscribe(
         () => {
           this.loadVagas();

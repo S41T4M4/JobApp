@@ -1,7 +1,7 @@
 <div *ngIf="isLoading">Carregando candidatos...</div>
 <div *ngIf="!isLoading && candidatos.length === 0">Nenhum candidato encontrado para as suas vagas.</div>
 <div *ngIf="!isLoading && candidatos.length > 0">
-  <mat-card *ngFor="let candidato of candidatos" class="candidato-card">
+  <mat-card *ngFor="let candidato of candidatos" class="postagem-card">
     <mat-card-header>
       <mat-card-title><strong>{{candidato.titulo_vagas}}</strong></mat-card-title>
     </mat-card-header>
@@ -13,7 +13,7 @@
     <mat-card-footer>
 
       <button (click)="alterarStatus(candidato.id, 'Aprovado')">Aprovar</button>
-
+      <!-- Botão para Reprovar -->
       <button (click)="alterarStatus(candidato.id, 'Reprovado')">Reprovar</button>
     </mat-card-footer>
   </mat-card>

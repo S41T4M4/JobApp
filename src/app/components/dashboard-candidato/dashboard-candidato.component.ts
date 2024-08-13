@@ -1,15 +1,17 @@
+import { AplicarCandidatura } from './../../candidatura.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
-import { Candidatura } from '../../candidaturas.model'; // Certifique-se de que o caminho está correto
+
 
 @Component({
   selector: 'app-dashboard-candidato',
   templateUrl: './dashboard-candidato.component.html',
-  styleUrls: ['./dashboard-candidato.component.css'],
+  styleUrls: ['./dashboard-candidato.component.css']
 })
 export class DashboardCandidatoComponent implements OnInit {
   vagas: any[] = [];
   isLoading: boolean = true;
+  idCandidato: number = 4;
 
   constructor(private authService: AuthService) { }
 
@@ -30,35 +32,26 @@ export class DashboardCandidatoComponent implements OnInit {
   }
 
   applyVaga(vagaId: number): void {
-    const candidatura: Candidatura = {
+    const candidatura: AplicarCandidatura = {
+      id : 0,
       id_vaga: vagaId,
-      id_candidato: 0,
+      id_candidato: this.idCandidato,
+      nome_candidato:'',
+      email_candidato:'',
+      titulo_vagas:'',
+      id_recrutador:0,
       status: 'Pendente',
       data_candidatura: new Date().toISOString(),
-      nome_candidato: '',
-      email_candidato: '',
-      titulo_vagas: ''
-      ,
-      id: 0,
-      vaga: {
-        id: 0,
-        titulo: '',
-        descricao: '',
-        status: ''
-      },
-      candidato: {
-        id: 0,
-        nome: '',
-        email: ''
-      }
+
     };
 
     this.authService.postCandidatura(candidatura).subscribe(
       () => {
-        alert('Candidatura enviada com sucesso!');
-        this.loadVagas(); // Recarrega as vagas após a candidatura
+        console.log('Candidatura realizada com sucesso!');
+        this.loadVagas();
       },
       error => {
+        window.alert('Você já está cadastrado !');
         console.error('Erro ao se candidatar:', error);
       }
     );

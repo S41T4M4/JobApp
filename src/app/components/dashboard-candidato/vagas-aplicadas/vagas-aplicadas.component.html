@@ -11,12 +11,14 @@
       <p>{{ candidato.vaga.descricao}}</p>
       <mat-divider></mat-divider>
       <h2>Requisitos</h2>
+      <p>{{candidato.vaga.descricao}}</p>
+      <h2>Status da candidatura </h2>
       <p>{{ candidato.status }}</p>
 
       <div class="button-group">
 
 
-        <button id="view-button">
+        <button id="view-button" (click)="deletCandidatura(candidato.id)">
 
              Retirar Candidatura
 

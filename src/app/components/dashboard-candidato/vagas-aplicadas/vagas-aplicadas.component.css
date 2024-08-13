@@ -1,16 +1,18 @@
 .postagem-card {
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 500px;
+  max-height: 700px;
   margin: 20px auto;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   padding: 16px;
-  border-radius: 12px;
-  box-shadow: 12 4px 8px rgba(2, 2, 0, 0.1);
+  border-radius: 8px;
+  border: 4px solid rgb(5, 71, 107);
+  box-shadow: 12px 12px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 .mat-card-header, .mat-card-content, mat-card-footer {
   box-sizing: border-box;
@@ -25,13 +27,14 @@
 }
 
 .mat-divider {
-  margin: 10px 0;
+  margin: 30px 20;
+
 }
 
 mat-card-footer {
   text-align: center;
   font-size: 0.875em;
-  color: rgb(255, 255, 255);
+  color: rgb(222, 216, 216);
   margin-top: 16px;
   background-color: #000000;
 }
@@ -41,6 +44,7 @@ mat-card-footer {
   gap: 4px;
   justify-content: center;
   margin-top: 16px;
+
 }
 
 button {
@@ -49,7 +53,8 @@ button {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  color: #fff;
+  color: #ffffff;
+  background-color: #dc3545;
   cursor: pointer;
   font-size: 0.875em;
 }
@@ -68,18 +73,13 @@ button img {
   background-color: #dc3545;
 }
 
-#view-button {
-  background-color: #6c757d;
-}
 
-#edit-button:hover {
-  background-color: #0056b3;
-}
 
-#delete-button:hover {
-  background-color: #a30514;
-}
 
+#view-button{
+ background-color: #a30514;
+}
 #view-button:hover {
-  background-color: #5a6268;
+  background-color: #eb1f18;
 }
+

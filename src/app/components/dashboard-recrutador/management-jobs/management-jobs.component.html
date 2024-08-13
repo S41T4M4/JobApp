@@ -1,11 +1,5 @@
 <app-menu></app-menu>
-<div class="void">
-  daasds<br>
-  dasdads<br>
-  dadsada<br>
-  dasdasdasd<br>
-  <br>
-</div>
+
 
 <mat-card class="container">
   <mat-card-header>
@@ -42,14 +36,14 @@
         <mat-label>Status</mat-label>
         <mat-select id="status" formControlName="status">
           <mat-option value="Aberta">Aberta</mat-option>
-          <mat-option value="Fechada">Fechada</mat-option>
+
         </mat-select>
       </mat-form-field>
-     <div>
+
       <button mat-raised-button class="create" type="submit" [disabled]="vagaForm.invalid">
         <img class="create" src="/add.png" alt="add">
       </button>
-     </div>
+
     </form>
   </mat-card-content>
 </mat-card>

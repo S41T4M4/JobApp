@@ -6,13 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './menu-vagas.component.css'
 })
 export class MenuVagasComponent {
- menuOpen: boolean = false;
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
 
-  closeMenu() {
-    this.menuOpen = false;
-  }
 }

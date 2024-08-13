@@ -31,6 +31,18 @@ isLoading: boolean = true;
       }
     );
   }
-
-
+  deletCandidatura(id : number):void{
+    if(confirm('Tem certeza de que deseja excluir sua candidaturaa !'))
+      {
+    this.authService.deleteCandidatura(id).subscribe(
+     ()=>{
+      this.candidatura = this.candidatura.filter( c => c.id !== id);
+      console.log('Candidatura excluida com sucesso !');
+     },
+     (error) =>{
+      console.error('Erro ao deletar candidatura', error);
+     }
+    )
+  }
+}
 }

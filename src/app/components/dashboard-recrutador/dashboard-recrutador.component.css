@@ -1,17 +1,17 @@
 .postagem-card {
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 500px;
+  max-height: 700px;
   margin: 20px auto;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 12 4px 8px rgba(2, 2, 0, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  border: 3px solid rgb(5, 71, 107);
+  box-shadow: 12px 12px 12px rgba(6, 231, 235, 0.1);
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .mat-card-header, .mat-card-content, mat-card-footer {
   box-sizing: border-box;
 }

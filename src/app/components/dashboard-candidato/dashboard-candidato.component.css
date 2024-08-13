@@ -1,16 +1,26 @@
 .postagem-card {
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 500px;
+  max-height: 700px;
   margin: 20px auto;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 12 4px 8px rgba(2, 2, 0, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  border: 3px solid rgb(5, 71, 107);
+  box-shadow: 12px 12px 12px rgba(6, 231, 235, 0.1);
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+#apply-button{
+  background-color: #ffffff;
+
+}
+#apply-button:hover{
+  background-color: #ffffff;
+}
+
+
 
 .mat-card-header, .mat-card-content, mat-card-footer {
   box-sizing: border-box;
@@ -25,22 +35,23 @@
 }
 
 .mat-divider {
-  margin: 10px 0;
+  margin: 20px 10;
 }
 
 mat-card-footer {
   text-align: center;
-  font-size: 0.875em;
-  color: rgb(255, 255, 255);
+  font-size: 0.995em;
+  color: rgb(43, 45, 98);
   margin-top: 16px;
-  background-color: #000000;
+
 }
 
 .button-group {
   display: flex;
   gap: 4px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 4px;
+
 }
 
 button {
@@ -55,9 +66,9 @@ button {
 }
 
 button img {
-  height: 24px;
+  height: 44px;
   width: auto;
-  margin-right: 8px;
+
 }
 
 #edit-button {
