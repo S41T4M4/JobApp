@@ -9,23 +9,23 @@
 	<div class="main">
 		<input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="signup">
-				<form>
+			<div class="signup" >
+				<form (ngSubmit)=" cadastroUsuario()">
 					<label for="chk" aria-hidden="true">BRINKEDIN</label>
-					<input type="text" name="txt" placeholder="Nome" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-          <input type="text" name="broj" placeholder="Candidato ou Recrutador" required="">
-					<input type="password" name="pswd" placeholder="Senha" required="">
-					<button>Cadastrar-se</button>
+					<input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
+					<input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
+          <input type="text" name="broj" placeholder="Candidato ou Recrutador" required="" [(ngModel)]="perfil">
+					<input  type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
+					<button type="submit" title="Cadastrar-se">Cadastrar-se</button>
 				</form>
 			</div>
 
 
-    <div class="login">
+    <div class="login" title="Entrar com seu Login">
     <form (ngSubmit)="login()">
       <label for="chk" aria-hidden="true">Login</label>
-      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
-      <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required  >
+      <input type="password" [(ngModel)]="senha"  name="senha" placeholder="Senha" required>
       <input type="text" [(ngModel)]="perfil" name="perfil" placeholder="Candidato ou Recrutador" required>
       <button type="submit">Entrar</button>
     </form>
@@ -35,3 +35,6 @@
   </div>
 
 </html>
+
+
+// [value] is a property binding

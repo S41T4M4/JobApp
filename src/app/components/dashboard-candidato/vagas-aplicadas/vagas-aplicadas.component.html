@@ -13,15 +13,15 @@
       <h2>Requisitos</h2>
       <p>{{candidato.vaga.descricao}}</p>
       <h2>Status da candidatura </h2>
-      <p>{{ candidato.status }}</p>
 
+         <button disabled class="status-style"
+         [ngStyle]="{
+          'background-color': candidato.status === 'Pendente'  ? '#996515'  : candidato.status ==='Aprovado'  ? '#006400' : '#8b0000'}">{{ candidato.status }}</button>
       <div class="button-group">
 
 
-        <button id="view-button" (click)="deletCandidatura(candidato.id)">
-
-             Retirar Candidatura
-
+        <button id="delete-candidatura" (click)="deletCandidatura(candidato.id)" title="Retirar Candidatura">
+             Desistir da Candidatura
         </button>
       </div>
     </mat-card-content>

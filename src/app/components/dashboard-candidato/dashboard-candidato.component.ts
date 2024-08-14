@@ -11,7 +11,7 @@ import { AuthService } from '../../auth.service';
 export class DashboardCandidatoComponent implements OnInit {
   vagas: any[] = [];
   isLoading: boolean = true;
-  idCandidato: number = 4;
+  idCandidato = Number(localStorage.getItem('id'));
 
   constructor(private authService: AuthService) { }
 
@@ -24,6 +24,7 @@ export class DashboardCandidatoComponent implements OnInit {
       (data: any[]) => {
         this.vagas = data;
         this.isLoading = false;
+
       },
       error => {
         console.error('Erro ao carregar vagas:', error);

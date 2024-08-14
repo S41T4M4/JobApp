@@ -12,6 +12,9 @@
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.status-style{
+  background-color: #013535;
+}
 
 
 .mat-card-header, .mat-card-content, mat-card-footer {

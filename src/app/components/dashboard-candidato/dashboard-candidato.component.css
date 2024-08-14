@@ -12,6 +12,10 @@
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+#myApplied {
+  height: 90px;
+}
+
 #apply-button{
   background-color: #ffffff;
 

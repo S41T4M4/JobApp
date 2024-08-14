@@ -13,21 +13,23 @@ isLoading: boolean = true;
  constructor(private authService: AuthService) { }
 
  ngOnInit(){
-  this.isLoading = false;
+
   this.getCandidaturas();
  };
 
 
    getCandidaturas(): void {
+
     const candidatoId = Number(localStorage.getItem('id'));
     this.authService.getCandidaturasByIdCandidato(candidatoId).subscribe(
       (data: Candidatura[]) => {
         this.candidatura = data;
         this.isLoading = false;
+
       },
       (error) => {
         console.error('Erro ao carregar vagas', error);
-        this.isLoading = false;
+
       }
     );
   }

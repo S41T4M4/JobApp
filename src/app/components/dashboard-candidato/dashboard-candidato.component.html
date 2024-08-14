@@ -2,6 +2,7 @@
 <div *ngIf="isLoading">Carregando...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">
+
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
       <mat-card-title>{{ vaga.titulo }}</mat-card-title>
@@ -21,9 +22,8 @@
       <p>R${{ vaga.salario }}</p>
 
       <div class="button-group">
-        <button id="apply-button" (click)="applyVaga(vaga.id)">
+        <button title="Aplicar-se" id="apply-button" (click)="applyVaga(vaga.id)">
             <img src="/job-application.png" alt="Apply Icon">
-
        </button>
       </div>
 
@@ -32,6 +32,7 @@
     <mat-card-footer>
       <mat-divider></mat-divider>
       <p>{{ vaga.localizacao }}</p>
+
        <mat-card-subtitle>Vaga {{ vaga.status }}</mat-card-subtitle>
 
     </mat-card-footer>

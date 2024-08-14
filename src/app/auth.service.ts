@@ -25,6 +25,10 @@ export class AuthService {
       })
     );
   }
+  postUsuario(email: string, senha: string, perfil: string, nome: string):Observable<any>{
+    const usuarioViewModel = { email, senha, perfil ,nome};
+     return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/usuarios`, usuarioViewModel)
+  }
 
   getCandidaturas():Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/candidaturas`);
@@ -76,9 +80,11 @@ updateVagas(id: number, vaga: Vaga): Observable<any> {
 getCandidaturasByIdCandidato(id_candidato :number) : Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/jobApplication/candidaturasPorCandidato/${id_candidato}`);
 }
-  postCandidatura(candidatura: AplicarCandidatura): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/jobApplication/candidaturas`, candidatura);
-  }
+
+postCandidatura(candidatura: any): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/jobApplication/candidaturas`, candidatura);
+}
+
   deleteCandidatura(id : number) : Observable<any>{
     return this.http.delete<any>(`${this.apiUrl}/jobApplication/candidaturas/${id}`);
   }
