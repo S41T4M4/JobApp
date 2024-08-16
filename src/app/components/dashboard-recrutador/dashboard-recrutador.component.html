@@ -5,7 +5,7 @@
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
       <mat-card-title>
-        <!-- Se estiver em modo de edição, mostra um campo de texto para o título -->
+
         <span *ngIf="selectedVaga === vaga; else normalView">
           <input [(ngModel)]="tempVaga.titulo" placeholder="Título" />
         </span>
@@ -14,7 +14,7 @@
       <mat-card-subtitle>
         Status:
         <span *ngIf="selectedVaga === vaga; else statusView">
-          <select [(ngModel)]="tempVaga.status">
+          <select [(ngModel)]="tempVaga.status" >
             <option value="Aberta">Aberta</option>
             <option value="Fechada">Fechada</option>
           </select>
@@ -35,7 +35,7 @@
 
 
 
-      <!-- Campo de edição para salário -->
+
       <p>Salário:
         <span *ngIf="selectedVaga === vaga; else salarioView">
           <input [(ngModel)]="tempVaga.salario" placeholder="Salário" />
@@ -43,7 +43,7 @@
         <ng-template #salarioView>R${{ vaga.salario }}</ng-template>
       </p>
 
-      <!-- Campo de edição para localização -->
+
       <p>Localização:
         <span *ngIf="selectedVaga === vaga; else localizacaoView">
           <input [(ngModel)]="tempVaga.localizacao" placeholder="Localização" />
@@ -52,32 +52,38 @@
       </p>
 
       <div class="button-group">
-        <!-- Botão de editar ou salvar -->
         <button id="save-button" *ngIf="selectedVaga === vaga; else editButton" (click)="updateVaga()">
-          Salvar
+          <img src="/confirmation.png" alt="confirm"/>
         </button>
         <ng-template #editButton>
-          <button id="edit-button"  (click)="editVaga(vaga)">
+          <button title="Editar vaga" id="edit-button" (click)="editVaga(vaga)" [ngStyle]="">
             <img src="/edit.png" alt="Edit" />
           </button>
         </ng-template>
 
-        <!-- Botão de cancelar ou excluir -->
-        <button id="cancel-edit" *ngIf="selectedVaga === vaga; else deleteButton"  (click)="cancelEdit()">
-          Cancelar
+
+        <button title="Cancelar" id="cancel-edit" *ngIf="selectedVaga === vaga; else deleteButton"  (click)="cancelEdit()">
+         <img src="/cancel.png" alt="cancel"/>
         </button>
         <ng-template #deleteButton>
-          <button id="delete-button" (click)="deleteVaga(vaga.id)">
+          <button title="Apagar Vaga" id="delete-button" (click)="deleteVaga(vaga.id)">
             <img src="/delete.png" alt="Delete" />
           </button>
         </ng-template>
 
-        <!-- Botão de ver candidatos, ocultado no modo de edição -->
-        <button *ngIf="selectedVaga !== vaga" id="view-button">
+
+        <button title="Visualizar Candidatos na vaga" *ngIf="selectedVaga !== vaga; else editMode" id="view-button">
           <a routerLink="/candidatos-em-vagas">
              <img src="/view.png" alt="View" />
           </a>
         </button>
+        <ng-template #editMode>
+          <p>
+              Modo edição
+          </p>
+
+
+        </ng-template>
       </div>
     </mat-card-content>
   </mat-card>

@@ -1,9 +1,12 @@
 <app-menu-vagas></app-menu-vagas>
+
 <div *ngIf="isLoading">...</div>
 <div *ngIf="!isLoading && candidatura.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && candidatura.length > 0">
+
   <mat-card *ngFor="let candidato of candidatura" class="postagem-card">
     <mat-card-header>
+
       <mat-card-title>{{ candidato.vaga.titulo }}</mat-card-title>
       <mat-card-subtitle>Status: {{ candidato.vaga.status }}</mat-card-subtitle>
     </mat-card-header>
@@ -18,8 +21,6 @@
          [ngStyle]="{
           'background-color': candidato.status === 'Pendente'  ? '#996515'  : candidato.status ==='Aprovado'  ? '#006400' : '#8b0000'}">{{ candidato.status }}</button>
       <div class="button-group">
-
-
         <button id="delete-candidatura" (click)="deletCandidatura(candidato.id)" title="Retirar Candidatura">
              Desistir da Candidatura
         </button>

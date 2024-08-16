@@ -1,16 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+*{
+   font-family: "Roboto Mono", monospace;
+}
 .postagem-card {
   max-width: 500px;
   max-height: 700px;
   margin: 20px auto;
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(to bottom, #edf8f9 , #e8ffec);
   display: flex;
   flex-direction: column;
   padding: 6px;
   border-radius: 8px;
-  border: 3px solid rgb(5, 71, 107);
-  box-shadow: 12px 12px 12px rgba(6, 231, 235, 0.1);
+  border: 3px solid rgb(3, 18, 76);
+  box-shadow: 12px 12px 12px rgba(4, 132, 158, 0.296);
   overflow-y: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Roboto Mono", monospace;
+
 }
 .mat-card-header, .mat-card-content, mat-card-footer {
   box-sizing: border-box;
@@ -38,7 +43,7 @@ mat-card-footer {
 
 .button-group {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   justify-content: center;
   margin-top: 16px;
 }
@@ -46,33 +51,44 @@ mat-card-footer {
 button {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
+  padding: 16px 16px ;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px 8px;
   color: #fff;
-  cursor: pointer;
+  width: 60px;
   font-size: 0.875em;
+  justify-content: center;
 }
 
 button img {
   height: 24px;
   width: auto;
-  margin-right: 8px;
+
 }
 
 #edit-button {
   background-color: #007bff;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 #delete-button {
   background-color: #dc3545;
+  padding: 10px;
+  margin-top: 10px;
+
 }
 #cancel-edit{
   background-color:  #dc3545;
+  padding: 16px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 #view-button {
-  background-color: #6c757d;
+  background-color: #e6f68e;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 #edit-button:hover {
@@ -80,12 +96,20 @@ button img {
 }
 
 #delete-button:hover {
-  background-color: #a30514;
+  background-color: #df0b20;
 }
 
 #view-button:hover {
-  background-color: #5a6268;
+  background-color: #f1fe77;
 }
 #save-button{
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+ font-weight: bold;
   background-color: #28a745;
+  cursor: pointer;
+}
+#save-button:hover{
+  background-color: #126525;
 }

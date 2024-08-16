@@ -7,7 +7,9 @@ import { Candidatura } from '../../../candidaturas.model';
   templateUrl: './vagas-aplicadas.component.html',
   styleUrl: './vagas-aplicadas.component.css'
 })
+
 export class VagasAplicadasComponent {
+text = '';
 candidatura :Candidatura[] = [];
 isLoading: boolean = true;
  constructor(private authService: AuthService) { }

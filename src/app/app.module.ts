@@ -24,6 +24,9 @@ import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/ca
 import { MenuVagasComponent } from './components/dashboard-candidato/menu-vagas/menu-vagas.component';
 import { MatIconModule } from '@angular/material/icon';
 import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-aplicadas/vagas-aplicadas.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
+
   ],
   providers: [
     provideAnimationsAsync()

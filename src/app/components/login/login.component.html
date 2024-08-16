@@ -1,40 +1,49 @@
 <html>
-<div class = "body">
+<div class="body">
   <head>
-	<title>Slide Navbar</title>
-<link rel="stylesheet" type="text/css" href="login.component.css">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-</head>
-<body>
-	<div class="main">
-		<input type="checkbox" id="chk" aria-hidden="true">
+    <title>Slide Navbar</title>
+    <link rel="stylesheet" type="text/css" href="login.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="signup" >
-				<form (ngSubmit)=" cadastroUsuario()">
-					<label for="chk" aria-hidden="true">BRINKEDIN</label>
-					<input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
-					<input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
-          <input type="text" name="broj" placeholder="Candidato ou Recrutador" required="" [(ngModel)]="perfil">
-					<input  type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
-					<button type="submit" title="Cadastrar-se">Cadastrar-se</button>
-				</form>
-			</div>
+      <div class="signup">
+        <form (ngSubmit)="cadastroUsuario()">
+          <label for="chk" aria-hidden="true">BRINKEDIN</label>
+          <input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
+          <input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
+
+          <!-- Substituindo o input por um select para tipo de perfil -->
+          <select name="perfil" required="" [(ngModel)]="perfil">
+            <option value="" disabled selected>Selecione o perfil</option>
+            <option value="Candidato">Candidato</option>
+            <option value="Recrutador">Recrutador</option>
+          </select>
+
+          <input type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
+          <button type="submit" title="Cadastrar-se">Cadastrar-se</button>
+        </form>
+      </div>
+
+      <div class="login" title="Entrar com seu Login">
+        <form (ngSubmit)="login()">
+          <label for="chk" aria-hidden="true">Login</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+          <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
 
 
-    <div class="login" title="Entrar com seu Login">
-    <form (ngSubmit)="login()">
-      <label for="chk" aria-hidden="true">Login</label>
-      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required  >
-      <input type="password" [(ngModel)]="senha"  name="senha" placeholder="Senha" required>
-      <input type="text" [(ngModel)]="perfil" name="perfil" placeholder="Candidato ou Recrutador" required>
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-	</div>
-</body>
-  </div>
+          <select name="perfil" required="" [(ngModel)]="perfil">
+            <option value="" disabled selected>Selecione o perfil</option>
+            <option value="Candidato">Candidato</option>
+            <option value="Recrutador">Recrutador</option>
+          </select>
 
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</div>
 </html>
-
-
-// [value] is a property binding

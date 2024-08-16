@@ -8,13 +8,19 @@
     <mat-card-content>
       <mat-card-title>Candidato: {{ candidato.nome_candidato }}</mat-card-title>
       <mat-card-subtitle>Contato: {{ candidato.email_candidato }}</mat-card-subtitle>
-      <mat-card-subtitle>Status: {{ candidato.status }}</mat-card-subtitle>
+      <mat-card-subtitle [ngStyle]="{
+        'color': candidato.status === 'Aprovado' ? 'green' : candidato.status === 'Pendente' ? '#FFC72C' : 'red',
+
+      }">Status: {{ candidato.status }}</mat-card-subtitle>
     </mat-card-content>
-    <mat-card-footer>
-
-      <button (click)="alterarStatus(candidato.id, 'Aprovado')">Aprovar</button>
-
-      <button (click)="alterarStatus(candidato.id, 'Reprovado')">Reprovar</button>
+    <mat-card-footer class="button-group">
+      <button id="aprovar" (click)="alterarStatus(candidato.id, 'Aprovado')">
+        Aprovar
+      </button>
+      <button id="Pendente" (click)="alterarStatus(candidato.id, 'Pendente')">
+        Pendente
+      </button>
+      <button id="reprovar" (click)="alterarStatus(candidato.id, 'Reprovado')">Reprovar</button>
     </mat-card-footer>
   </mat-card>
 </div>
