@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 *{
    font-family: "Roboto Mono", monospace;
+   align-content: center;
 }
 .postagem-card {
+   left: 3%;
   max-width: 500px;
   max-height: 700px;
   margin: 20px auto;
-  background: linear-gradient(to bottom, #edf8f9 , #e8ffec);
+  background: linear-gradient(to bottom, #ffffff , #ffffff);
   display: flex;
   flex-direction: column;
   padding: 6px;
   border-radius: 8px;
-  border: 3px solid rgb(3, 18, 76);
-  box-shadow: 12px 12px 12px rgba(4, 132, 158, 0.296);
+  border: 1px solid rgb(178, 178, 178);
+  box-shadow: 12px 12px 12px rgba(214, 214, 214, 0.296);
   overflow-y: auto;
     font-family: "Roboto Mono", monospace;
 
@@ -67,47 +69,51 @@ button img {
 }
 
 #edit-button {
-  background-color: #007bff;
+  background-color: #d0e7ff;
   padding: 10px;
   margin-top: 10px;
 }
 
 #delete-button {
-  background-color: #dc3545;
+  background-color: #fab8bf;
   padding: 10px;
   margin-top: 10px;
 
 }
 #cancel-edit{
-  background-color:  #dc3545;
+  background-color:  #ff909b;
   padding: 16px;
   margin-top: 10px;
   cursor: pointer;
 }
+#cancel-edit:hover{
+    background-color:  #f64d5e;
+}
 
 #view-button {
-  background-color: #e6f68e;
+  background-color: #c2fef5;
   padding: 10px;
   margin-top: 10px;
 }
 
 #edit-button:hover {
-  background-color: #0056b3;
+   background-color: #add2fa;
+
 }
 
 #delete-button:hover {
-  background-color: #df0b20;
+    background-color: #f89da6;
 }
 
 #view-button:hover {
-  background-color: #f1fe77;
+  background-color: #9bfcee;
 }
 #save-button{
   text-align: center;
   padding: 10px;
   margin-top: 10px;
  font-weight: bold;
-  background-color: #28a745;
+  background-color: #7cf298;
   cursor: pointer;
 }
 #save-button:hover{

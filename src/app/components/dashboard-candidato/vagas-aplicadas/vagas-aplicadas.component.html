@@ -25,6 +25,18 @@
              Desistir da Candidatura
         </button>
       </div>
+      <h4 [ngSwitch]="candidato.status">
+         <p *ngSwitchCase="'Pendente'">... Sua vaga está em análise pelo nosso time de RH</p>
+         <p *ngSwitchCase="'Aprovado'">
+          Parabéns !!! 🥳🥳🥳🎉🎉🎉
+          Agora a empresa entrará em contato com você para maiores informações
+
+         </p>
+         <p *ngSwitchCase="'Reprovado'">Infelizmente não foi possível sua aprovação no processo seletivo. Seu currículo é ótimo, principalmente pelos projetos dos quais você participou na sua última experiência profissional. Agradecemos sinceramente pelo seu interesse na nossa empresa e desejamos muito sucesso em sua busca por novas oportunidades. Esperamos que possamos cruzar nossos caminhos novamente no futuro. </p>
+      </h4>
+      <ng-template #IsReproved>
+
+      </ng-template>
     </mat-card-content>
     <mat-card-footer>
 

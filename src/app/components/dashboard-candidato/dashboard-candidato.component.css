@@ -1,4 +1,5 @@
 .postagem-card {
+  left: 3%;
   max-width: 500px;
   max-height: 700px;
   margin: 20px auto;
@@ -7,8 +8,8 @@
   flex-direction: column;
   padding: 6px;
   border-radius: 8px;
-  border: 3px solid rgb(5, 71, 107);
-  box-shadow: 12px 12px 12px rgba(6, 231, 235, 0.1);
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: 12px 12px 12px rgba(81, 81, 81, 0.1);
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -21,7 +22,7 @@
 
 }
 #apply-button:hover{
-  background-color: #ffffff;
+  background-color: #7cd835;
 }
 
 

@@ -22,9 +22,12 @@
       <p>R${{ vaga.salario }}</p>
 
       <div class="button-group">
-        <button title="Aplicar-se" id="apply-button" (click)="applyVaga(vaga.id)">
+        <button title="Aplicar-se" id="apply-button" (click)="applyVaga(vaga.id)"  *ngIf="vaga.status === 'Aberta'; else vagaFechada; ">
             <img src="/job-application.png" alt="Apply Icon">
        </button>
+       <ng-template #vagaFechada>
+           Vaga Fechada
+       </ng-template>
       </div>
 
     </mat-card-content>
@@ -33,7 +36,9 @@
       <mat-divider></mat-divider>
       <p>{{ vaga.localizacao }}</p>
 
-       <mat-card-subtitle>Vaga {{ vaga.status }}</mat-card-subtitle>
+       <mat-card-subtitle>Vaga {{ vaga.status }}
+
+      </mat-card-subtitle>
 
     </mat-card-footer>
   </mat-card>

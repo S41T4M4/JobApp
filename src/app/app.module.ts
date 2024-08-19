@@ -27,6 +27,7 @@ import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSelectModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule
 
   ],
   providers: [

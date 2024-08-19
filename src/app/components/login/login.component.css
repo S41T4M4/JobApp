@@ -5,13 +5,13 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #aef1f0;
+  background-color: #ffffff;
 }
 
 .main {
   width: 350px;
   height: 500px;
-  background: linear-gradient(to bottom, #024066, #195974, #6a8bb1);
+  background: linear-gradient(to bottom, #024066, #195974, #487ab3);
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 5px 20px 50px #084660;

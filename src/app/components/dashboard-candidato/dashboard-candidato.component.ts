@@ -12,13 +12,15 @@ export class DashboardCandidatoComponent implements OnInit {
   vagas: any[] = [];
   isLoading: boolean = true;
   idCandidato = Number(localStorage.getItem('id'));
-
+ isDisabled = false;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadVagas();
   }
-
+isOpen(){
+  this.isDisabled = !this.isDisabled;
+}
   loadVagas(): void {
     this.authService.getVagasAbertas().subscribe(
       (data: any[]) => {

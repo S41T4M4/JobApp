@@ -1,9 +1,11 @@
+<app-menu></app-menu>
 <div *ngIf="isLoading">Carregando candidatos...</div>
 <div *ngIf="!isLoading && candidatos.length === 0">Nenhum candidato encontrado para as suas vagas.</div>
 <div *ngIf="!isLoading && candidatos.length > 0">
-  <mat-card *ngFor="let candidato of candidatos" class="postagem-card">
+  <mat-card *ngFor="let candidato of candidatos; let isFirst = first" class="postagem-card" >
     <mat-card-header>
-      <mat-card-title><strong>{{candidato.titulo_vagas}}</strong></mat-card-title>
+      <!-- Using Pipes-->
+      <mat-card-title><strong>{{candidato.titulo_vagas | uppercase}}</strong></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-card-title>Candidato: {{ candidato.nome_candidato }}</mat-card-title>
@@ -15,12 +17,15 @@
     </mat-card-content>
     <mat-card-footer class="button-group">
       <button id="aprovar" (click)="alterarStatus(candidato.id, 'Aprovado')">
-        Aprovar
+           ✔️
       </button>
+
       <button id="Pendente" (click)="alterarStatus(candidato.id, 'Pendente')">
-        Pendente
+          ⏳
       </button>
-      <button id="reprovar" (click)="alterarStatus(candidato.id, 'Reprovado')">Reprovar</button>
+      <button id="reprovar" (click)="alterarStatus(candidato.id, 'Reprovado')">❌</button>
     </mat-card-footer>
+
   </mat-card>
+"
 </div>
