@@ -13,7 +13,7 @@ export class ManagementJobsComponent implements OnInit {
   isLoading: boolean = true;
   id_recrutador: number = 0;
   vagaForm!: FormGroup;
-
+  erro = '';
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ManagementJobsComponent implements OnInit {
       titulo: ['', Validators.required],
       descricao: ['', Validators.required],
       requisitos: ['', Validators.required],
-      salario: [0, [Validators.required, Validators.min(0)]],
+      salario: [0, [Validators.required, Validators.min(0) ]],
       localizacao: ['', Validators.required],
       status: ['', Validators.required],
       id_recrutador: [this.id_recrutador]
@@ -57,6 +57,7 @@ export class ManagementJobsComponent implements OnInit {
           this.vagaForm.reset();
         },
         (error) => {
+          this.erro = 'Erro ao adicionar vaga : ' + error.error;
           console.error('Erro ao adicionar vaga', error);
         }
       );

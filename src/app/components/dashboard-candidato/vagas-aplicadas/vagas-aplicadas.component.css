@@ -87,3 +87,9 @@ button img {
   background-color: #eb1f18;
 }
 
+.status-style{
+  cursor:default;
+  width: 90px;
+  text-align: center;
+
+}

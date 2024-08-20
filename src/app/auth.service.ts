@@ -88,5 +88,8 @@ postCandidatura(candidatura: any): Observable<any> {
   deleteCandidatura(id : number) : Observable<any>{
     return this.http.delete<any>(`${this.apiUrl}/jobApplication/candidaturas/${id}`);
   }
+  getCandidaturasByIdVaga(id_vaga : number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/candidatos/${id_vaga}`);
+  }
 
 }

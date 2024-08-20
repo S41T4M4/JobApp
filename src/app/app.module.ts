@@ -28,6 +28,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ErrorComponentComponent } from './components/error-component/error-component.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatListModule } from '@angular/material/list';
     CandidatosEmVagasComponent,
     MenuVagasComponent,
     VagasAplicadasComponent,
+    ErrorComponentComponent,
 
 
   ],

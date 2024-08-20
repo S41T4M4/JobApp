@@ -73,13 +73,13 @@
 
 
         <button title="Visualizar Candidatos na vaga" *ngIf="selectedVaga !== vaga; else editMode" id="view-button">
-          <a routerLink="/candidatos-em-vagas">
+          <a routerLink="/candidatos-em-vagas/{{vaga.id}}">
              <img src="/view.png" alt="View" />
           </a>
         </button>
         <ng-template #editMode>
           <p>
-              Modo edição
+              Editing
           </p>
 
 

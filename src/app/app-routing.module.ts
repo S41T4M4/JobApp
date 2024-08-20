@@ -9,6 +9,10 @@ import { DashboardCandidatoComponent } from './components/dashboard-candidato/da
 import { ManagementJobsComponent } from './components/dashboard-recrutador/management-jobs/management-jobs.component';
 import { CandidatosEmVagasComponent } from './components/dashboard-recrutador/candidatos-em-vagas/candidatos-em-vagas.component';
 import { VagasAplicadasComponent } from './components/dashboard-candidato/vagas-aplicadas/vagas-aplicadas.component';
+import { ManagementJobsGuard } from './_guard/management-jobs.guard';
+import { VagasAplicadasGuard } from './_guard/vagas-aplicadas.guard';
+import { CandidatosVagaGuard } from './_guard/candidatos-em-vagas.guard';
+import { ErrorComponentComponent } from './components/error-component/error-component.component';
 
 
 
@@ -18,11 +22,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard-recrutador', component: DashboardRecrutadorComponent, canActivate: [AuthGuard, RecrutadorGuard] },
   { path: 'dashboard-candidato', component: DashboardCandidatoComponent, canActivate: [AuthGuard, CandidatoGuard] },
-  { path: 'management-jobs', component: ManagementJobsComponent},
-  { path: 'candidatos-em-vagas', component: CandidatosEmVagasComponent},
-  {path : 'vagas-aplicadas', component : VagasAplicadasComponent},
+  { path: 'management-jobs', component: ManagementJobsComponent, canActivate: [AuthGuard, ManagementJobsGuard]},
+  { path: 'candidatos-em-vagas/:id', component: CandidatosEmVagasComponent, canActivate: [AuthGuard, CandidatosVagaGuard]},
+  { path : 'vagas-aplicadas', component : VagasAplicadasComponent, canActivate: [AuthGuard, VagasAplicadasGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
+  { path: 'error', component : ErrorComponentComponent},
 
 ];
 
