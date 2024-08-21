@@ -59,7 +59,7 @@ applyVaga(vagaId: number): void {
   // Chama o serviço para enviar a candidatura
   this.authService.postCandidatura(candidatura).subscribe(
     () => {
-      this.confirmedCandidatura = 'Confirmado Candidatura';
+      this.confirmedCandidatura = 'Candidatura confirmada !';
       console.log('Candidatura realizada com sucesso!'  + this.confirmedCandidatura);
       this.loadVagas();
     },

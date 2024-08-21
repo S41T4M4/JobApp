@@ -27,7 +27,7 @@ const routes: Routes = [
   { path : 'vagas-aplicadas', component : VagasAplicadasComponent, canActivate: [AuthGuard, VagasAplicadasGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
-  { path: 'error', component : ErrorComponentComponent},
+  { path: 'error-component', component : ErrorComponentComponent},
 
 ];
 

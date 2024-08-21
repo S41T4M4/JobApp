@@ -15,6 +15,8 @@
       <mat-divider></mat-divider>
       <h2>Requisitos</h2>
       <p>{{candidato.vaga.descricao}}</p>
+      <h3>Salário</h3>
+      <p>{{candidato.vaga.salario | currency }}</p>
       <h2>Status da candidatura </h2>
 
          <button disabled class="status-style"

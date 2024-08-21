@@ -8,5 +8,6 @@ export interface AplicarCandidatura {
   id_recrutador: number;
   status?: string;
   data_candidatura?: string;
+  salario? : number;
 
 }

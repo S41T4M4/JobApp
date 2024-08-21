@@ -29,9 +29,10 @@ cadastroUser ={
 
 
   login() {
-    this.authService.login(this.email, this.senha, this.perfil, this.id).subscribe(response => {
-      console.log('Login bem-sucedido:', response);
+    //debugger
 
+      this.authService.login(this.email, this.senha, this.perfil, this.id).subscribe(response => {
+      console.log('Login bem-sucedido:', response);
       if (response.perfil === 'Recrutador') {
         this.router.navigate(['/dashboard-recrutador']);
       } else if (response.perfil === 'Candidato') {
@@ -47,9 +48,9 @@ cadastroUser ={
   cadastroUsuario(){
    // debugger
     this.authService.postUsuario(this.email,this.senha,this.perfil,this.nome).subscribe(response=>{
-     alert('Usuario cadastrado');
-     console.log(response);
-    })
+      console.log('Cadastrado com sucesso:',response);
+    }
+  )
 
   }
 }

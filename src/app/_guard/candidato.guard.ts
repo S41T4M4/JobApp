@@ -15,10 +15,11 @@ export class CandidatoGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const perfil = this.authService.getPerfil();
     if (perfil === 'Candidato') {
+      console.log("Acesso concedido a Candidato")
       return true;
     } else {
       console.log('Acesso negado para Candidato!');
-      this.router.navigate(['/login']);
+
       return false;
     }
   }

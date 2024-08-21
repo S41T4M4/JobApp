@@ -8,6 +8,7 @@
 
         <span *ngIf="selectedVaga === vaga; else normalView">
           <input [(ngModel)]="tempVaga.titulo" placeholder="Título" />
+
         </span>
         <ng-template #normalView>{{ vaga.titulo }}</ng-template>
       </mat-card-title>
@@ -32,15 +33,11 @@
 
       <h2>Requisitos</h2>
       <p *ngIf="selectedVaga?.id !== vaga.id">{{ vaga.requisitos }}</p> <textarea *ngIf="selectedVaga?.id === vaga.id" [(ngModel)]="tempVaga.requisitos" placeholder="Requisitos"></textarea>
-
-
-
-
       <p>Salário:
         <span *ngIf="selectedVaga === vaga; else salarioView">
           <input [(ngModel)]="tempVaga.salario" placeholder="Salário" />
         </span>
-        <ng-template #salarioView>R${{ vaga.salario }}</ng-template>
+        <ng-template #salarioView>R{{ vaga.salario | currency}}</ng-template>
       </p>
 
 
@@ -78,10 +75,6 @@
           </a>
         </button>
         <ng-template #editMode>
-          <p>
-              Editing
-          </p>
-
 
         </ng-template>
       </div>

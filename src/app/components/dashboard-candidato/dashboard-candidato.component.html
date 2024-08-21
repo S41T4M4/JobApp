@@ -5,7 +5,7 @@
 
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
-      <mat-card-title>{{ vaga.titulo }}</mat-card-title>
+      <mat-card-title>{{ vaga.titulo  | uppercase}}</mat-card-title>
 
     </mat-card-header>
 
@@ -19,7 +19,7 @@
       <h2>Requisitos</h2>
       <p>{{ vaga.requisitos }}</p>
       <h2>Salário</h2>
-      <p>R${{ vaga.salario }}</p>
+      <p>{{ vaga.salario | currency }} </p>
 
       <div class="button-group">
         <button title="Aplicar-se a vaga" id="apply-button" (click)="applyVaga(vaga.id)"  *ngIf="vaga.status === 'Aberta'; else vagaFechada; ">
@@ -39,9 +39,7 @@
        <mat-card-subtitle>Vaga {{ vaga.status }}
 
       </mat-card-subtitle>
-        <span *ngIf="confirmedCandidatura">
-      {{confirmedCandidatura}}
-    </span>
+
 
     </mat-card-footer>
   </mat-card>

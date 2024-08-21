@@ -12,8 +12,15 @@ export class ManagementJobsComponent implements OnInit {
   vagas: Vaga[] = [];
   isLoading: boolean = true;
   id_recrutador: number = 0;
+  error: Error | null = null
   vagaForm!: FormGroup;
   erro = '';
+  requiredTitulo = 'O campo de titulo é obrigatorio !!'
+  requiredDescription = 'O campo de descrição é obrigatorio !!';
+  requiredRequisitos='O campo de requisitos é obrigatorio !!';
+  requiredSalario = 'O campo de salario é obrigatorio !!';
+  requiredLocal = 'O campo de local é obrigatorio !!';
+  requiredStatus = 'O campo de status é obrigatorio !!'
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -34,9 +41,28 @@ export class ManagementJobsComponent implements OnInit {
       id_recrutador: [this.id_recrutador]
     });
   }
+  get titulo(){
+    return this.vagaForm.get('titulo')!;
+  }
+  get descricao(){
+    return this.vagaForm.get('descricao')!;
+  }
+  get requisitos(){
+    return this.vagaForm.get('requisitos')!;
+  }
+  get salario(){
+    return this.vagaForm.get('salario')!;
+  }
+  get localizacao(){
+    return this.vagaForm.get('titulo')!;
+  }
+  get status(){
+    return this.vagaForm.get('status')!;
+  }
 
   loadVagas(): void {
-    this.authService.getVagas().subscribe(
+    try{
+      this.authService.getVagas().subscribe(
       (data: Vaga[]) => {
         this.vagas = data;
         this.isLoading = false;
@@ -46,9 +72,16 @@ export class ManagementJobsComponent implements OnInit {
         this.isLoading = false;
       }
     );
+    }catch (error){
+      if(error instanceof Error){
+        this.error=error;
+      }
+    }
+
   }
 
   addVaga(): void {
+
     if (this.vagaForm.valid) {
       console.log('Dados da Vaga:', this.vagaForm.value);
       this.authService.postVagas(this.vagaForm.value).subscribe(

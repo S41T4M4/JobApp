@@ -15,6 +15,7 @@ export interface Candidatura {
     titulo: string;
     descricao: string;
     status: string;
+    salario:number;
   };
   candidato: {
     id: number;

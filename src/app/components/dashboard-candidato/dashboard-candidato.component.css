@@ -15,14 +15,17 @@
 }
 #myApplied {
   height: 90px;
+
 }
 
 #apply-button{
-  background-color: #ffffff;
+   background-color: #c3fcb9ce;
+  border: 1px solid black;
+
 
 }
 #apply-button:hover{
-  background-color: #7cd835;
+  background-color: #a6ff96;
 }
 
 

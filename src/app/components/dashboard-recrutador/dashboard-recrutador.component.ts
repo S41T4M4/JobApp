@@ -1,6 +1,7 @@
 import { AuthService } from './../../auth.service';
 import { Vaga } from './../../vaga.model';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-recrutador',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardRecrutadorComponent implements OnInit {
   vagas: Vaga[] = [];
+  error = 'O campo é obrigatorio';
+  vagaForm!: FormGroup;
   selectedVaga: Vaga | null = null;
   isLoading: boolean = true;
   tempVaga: Vaga = {
@@ -65,8 +68,8 @@ export class DashboardRecrutadorComponent implements OnInit {
         () => {
           this.loadVagas(); // Recarregar a lista de vagas
           this.resetForm(); // Limpar seleção e formulário
-        },
-        (error) => {
+          },(error) => {
+          this.error = 'Não é possivel colocar esse salário', error;
           console.error('Erro ao atualizar vaga', error);
         }
       );
@@ -77,6 +80,7 @@ export class DashboardRecrutadorComponent implements OnInit {
     if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
       this.authService.deleteVagas(id).subscribe(
         () => {
+
           this.vagas = this.vagas.filter(v => v.id !== id); // Remove a vaga da lista local
           console.log('Vaga excluída com sucesso!');
         },

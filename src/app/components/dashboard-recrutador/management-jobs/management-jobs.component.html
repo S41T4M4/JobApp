@@ -10,26 +10,41 @@
       <mat-form-field appearance="fill">
         <mat-label>Título</mat-label>
         <input matInput id="titulo" formControlName="titulo" />
+        <div class="invalid-forms" *ngIf="titulo.invalid">
+          {{requiredTitulo}}
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Descrição</mat-label>
         <textarea matInput id="descricao" formControlName="descricao"></textarea>
+        <div class="invalid-forms" *ngIf="descricao.invalid">
+          {{requiredDescription}}
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Requisitos</mat-label>
         <input matInput id="requisitos" formControlName="requisitos" />
+        <div class="invalid-forms" *ngIf="requisitos.invalid">
+          {{requiredRequisitos}}
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Salário</mat-label>
         <input matInput id="salario" formControlName="salario" type="number" />
+        <div class="invalid-forms" *ngIf="salario.invalid">
+          {{requiredSalario}}
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Localização</mat-label>
         <input matInput id="localizacao" formControlName="localizacao" />
+        <div class="invalid-forms" *ngIf="localizacao.invalid">
+          {{requiredLocal}}
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="fill">

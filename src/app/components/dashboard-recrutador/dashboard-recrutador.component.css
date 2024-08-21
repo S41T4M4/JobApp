@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 *{
-   font-family: "Roboto Mono", monospace;
+
    align-content: center;
 }
 .postagem-card {
-   left: 3%;
+  left: 3%;
   max-width: 500px;
   max-height: 700px;
   margin: 20px auto;
@@ -14,12 +14,13 @@
   padding: 6px;
   border-radius: 8px;
   border: 1px solid rgb(178, 178, 178);
-  box-shadow: 12px 12px 12px rgba(214, 214, 214, 0.296);
+  box-shadow: 12px 12px 12px rgba(154, 196, 249, 0.292);
   overflow-y: auto;
-    font-family: "Roboto Mono", monospace;
+
 
 }
 .mat-card-header, .mat-card-content, mat-card-footer {
+     font-family: "Roboto Mono";
   box-sizing: border-box;
 }
 
@@ -60,6 +61,7 @@ button {
   width: 60px;
   font-size: 0.875em;
   justify-content: center;
+   cursor: pointer;
 }
 
 button img {
@@ -72,12 +74,16 @@ button img {
   background-color: #d0e7ff;
   padding: 10px;
   margin-top: 10px;
+  border: 1px solid black;
+   cursor: pointer;
 }
 
 #delete-button {
   background-color: #fab8bf;
   padding: 10px;
   margin-top: 10px;
+  border: 1px solid black;
+   cursor: pointer;
 
 }
 #cancel-edit{
@@ -85,6 +91,7 @@ button img {
   padding: 16px;
   margin-top: 10px;
   cursor: pointer;
+  border: 1px solid black;
 }
 #cancel-edit:hover{
     background-color:  #f64d5e;
@@ -94,6 +101,8 @@ button img {
   background-color: #c2fef5;
   padding: 10px;
   margin-top: 10px;
+  border: 1px solid black;
+
 }
 
 #edit-button:hover {
@@ -115,6 +124,7 @@ button img {
  font-weight: bold;
   background-color: #7cf298;
   cursor: pointer;
+  border: 1px solid black;
 }
 #save-button:hover{
   background-color: #126525;
