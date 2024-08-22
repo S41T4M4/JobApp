@@ -21,12 +21,14 @@ export class ManagementJobsComponent implements OnInit {
   requiredSalario = 'O campo de salario é obrigatorio !!';
   requiredLocal = 'O campo de local é obrigatorio !!';
   requiredStatus = 'O campo de status é obrigatorio !!'
+  isDisabled = false;
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
 
     this.id_recrutador = Number(localStorage.getItem('id'));
     this.initializeForm();
+    this.isValid();
     console.log(this.id_recrutador)
   }
 
@@ -40,6 +42,14 @@ export class ManagementJobsComponent implements OnInit {
       status: ['', Validators.required],
       id_recrutador: [this.id_recrutador]
     });
+  }
+  isValid(){
+    if(this.vagaForm.valid){
+     return this.isDisabled == false;
+    }
+    else{
+       return this.isDisabled == true;
+    }
   }
   get titulo(){
     return this.vagaForm.get('titulo')!;

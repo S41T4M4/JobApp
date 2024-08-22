@@ -76,6 +76,7 @@ export class DashboardRecrutadorComponent implements OnInit {
     }
   }
 
+
   deleteVaga(id: number): void {
     if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
       this.authService.deleteVagas(id).subscribe(

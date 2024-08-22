@@ -19,6 +19,7 @@ export class CandidatoGuard implements CanActivate {
       return true;
     } else {
       console.log('Acesso negado para Candidato!');
+      this.router.navigate(["/wrong-page"]);
 
       return false;
     }

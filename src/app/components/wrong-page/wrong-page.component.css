@@ -1,0 +1,16 @@
+.main {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+}
+
+.container {
+ position: relative;
+}
+
+.tittle {
+ position: absolute;
+ top: 100% ;
+
+}

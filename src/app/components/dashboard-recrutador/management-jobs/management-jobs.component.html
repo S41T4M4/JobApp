@@ -56,11 +56,11 @@
       </mat-form-field>
 
       <button mat-raised-button class="create" type="submit" [disabled]="vagaForm.invalid">
-        <img class="create" src="/add.png" alt="add">
+          Adicionar
       </button>
     <div>
-      <span id="Error" *ngIf="erro">
-          {{erro}}
+      <span *ngIf="vagaForm.invalid">
+          Formato Inválido
       </span>
     </div>
     </form>

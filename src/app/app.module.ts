@@ -28,7 +28,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { ErrorComponentComponent } from './components/error-component/error-component.component';
+import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
+import { StatusPipe } from './pipes/status.pipe';
+import { AlertComponent } from './alert/alert.component';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import { ErrorComponentComponent } from './components/error-component/error-comp
     CandidatosEmVagasComponent,
     MenuVagasComponent,
     VagasAplicadasComponent,
-    ErrorComponentComponent,
+    WrongPageComponent,
+    StatusPipe,
+    AlertComponent,
+    DialogComponent
+
 
 
   ],

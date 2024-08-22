@@ -19,7 +19,7 @@ export class ManagementJobsGuard implements CanActivate {
       return true;
     } else {
       console.log('Acesso negado para Recrutador!');
-
+      this.router.navigate(["/wrong-page"]);
       return false;
     }
   }

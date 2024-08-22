@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       console.log('Acesso negado!');
-
+      this.router.navigate(["/wrong-page"]);
       return false;
     }
   }
