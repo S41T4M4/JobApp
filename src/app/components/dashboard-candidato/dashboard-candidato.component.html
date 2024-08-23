@@ -1,4 +1,17 @@
 <app-menu-vagas></app-menu-vagas>
+<div class="error" *ngIf="isExisting == true">
+<app-alerts
+[message]="existingCandidatura"
+[alertStyles]="{'background-color':'#8b0000' , 'color' : 'white'}"
+></app-alerts>
+
+</div>
+<div class="sucsess" *ngIf="isSubmitted ==true">
+  <app-alerts
+  [message]="confirmedCandidatura"
+  [alertStyles]="{'background-color':'#013220' , 'color' : 'white'}"
+ ></app-alerts>
+</div>
 <div *ngIf="isLoading">Carregando...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">

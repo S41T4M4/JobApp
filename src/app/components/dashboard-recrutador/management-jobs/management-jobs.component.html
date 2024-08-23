@@ -1,4 +1,19 @@
 <app-menu></app-menu>
+<div class="erro" *ngIf="isSubmitted && vagaForm.invalid" >
+  <app-alerts
+  [message]="formatIncorrectMessage"
+  [alertStyles]="{'background-color':'#ffffe0' , 'font-size' : '20px'}"
+  [show]="true"
+  ></app-alerts>
+
+</div>
+<div class="required" *ngIf="vagaForm.invalid" >
+    <app-alerts
+    [message]="formatFieldsRequired"
+    [alertStyles]="{'background-color' : 'gray'}"
+    [show]="true"
+    ></app-alerts>
+  </div>
 
 
 <mat-card class="container">
@@ -35,8 +50,9 @@
         <mat-label>Salário</mat-label>
         <input matInput id="salario" formControlName="salario" type="number" />
         <div class="invalid-forms" *ngIf="salario.invalid">
-          {{requiredSalario}}
+           {{requiredSalario}}
         </div>
+
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -55,13 +71,14 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-raised-button class="create" type="submit" [disabled]="vagaForm.invalid">
+      <button mat-raised-button class="create" type="submit"   >
           Adicionar
       </button>
     <div>
-      <span *ngIf="vagaForm.invalid">
-          Formato Inválido
-      </span>
+
+    </div>
+    <div class="error">
+
     </div>
     </form>
   </mat-card-content>

@@ -28,11 +28,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
 import { StatusPipe } from './pipes/status.pipe';
-import { AlertComponent } from './alert/alert.component';
-import { DialogComponent } from './dialog/dialog.component';
-
+import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { AlertModule } from '@coreui/angular';
 
 
 @NgModule({
@@ -46,10 +45,12 @@ import { DialogComponent } from './dialog/dialog.component';
     CandidatosEmVagasComponent,
     MenuVagasComponent,
     VagasAplicadasComponent,
-    WrongPageComponent,
     StatusPipe,
-    AlertComponent,
-    DialogComponent
+    WrongPageComponent,
+    AlertsComponent
+
+
+
 
 
 
@@ -72,7 +73,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatIconModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    AlertModule
 
   ],
   providers: [

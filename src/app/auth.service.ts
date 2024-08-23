@@ -15,13 +15,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, senha: string, perfil: string, id : number): Observable<any> {
-    const loginViewModel = { email, senha, perfil, id };
+  login(email: string, senha: string, perfil: string, id : number, nome:string): Observable<any> {
+    const loginViewModel = { email, senha, perfil, id , nome};
     return this.http.post<any>(`${this.apiUrl}/auth/login`, loginViewModel).pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('perfil', response.perfil);
         localStorage.setItem('id', response.id);
+        localStorage.setItem('nome', response.nome);
       })
     );
   }

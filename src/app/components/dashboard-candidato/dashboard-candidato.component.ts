@@ -1,7 +1,8 @@
 import { AplicarCandidatura } from './../../candidatura.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../auth.service';
-
+import { AlertComponent } from '@coreui/angular';
+import { AlertsComponent } from '../alerts/alerts.component';
 
 @Component({
   selector: 'app-dashboard-candidato',
@@ -9,11 +10,17 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./dashboard-candidato.component.css']
 })
 export class DashboardCandidatoComponent implements OnInit {
- vagas: any[] = []; // Array para armazenar as vagas carregadas
-isLoading: boolean = true; // Indica se os dados estão sendo carregados
-idCandidato = Number(localStorage.getItem('id')); // Obtém o ID do candidato armazenado no localStorage e converte para número
+  @ViewChild(AlertComponent) alertComponent!: AlertsComponent;
+ vagas: any[] = [];
+isLoading: boolean = true;
+idCandidato = Number(localStorage.getItem('id'));
 isDisabled = false;
-confirmedCandidatura = '';
+confirmedCandidatura = 'Parabéns você se Candidatou';
+existingCandidatura = 'Você já se candidatou nessa vaga !';
+showAlert = true;
+isSubmitted? : boolean ;
+isExisting? : boolean ;
+
 
 // Injeção do serviço de autenticação no construtor
 constructor(private authService: AuthService) { }
@@ -59,13 +66,45 @@ applyVaga(vagaId: number): void {
   // Chama o serviço para enviar a candidatura
   this.authService.postCandidatura(candidatura).subscribe(
     () => {
+      this.isSubmitted = true;
+      this.isExisting = false;
       this.confirmedCandidatura = 'Candidatura confirmada !';
       console.log('Candidatura realizada com sucesso!'  + this.confirmedCandidatura);
       this.loadVagas();
+
+     setTimeout(() => {
+        const successElement = document.querySelector('.sucsess');
+        if (successElement) {
+          successElement.classList.add('hidden');
+        }
+
+
+        setTimeout(() => {
+          this.isSubmitted = false;
+        }, 1000);
+      }, 5000);
+
     },
     error => {
-      window.alert('Você já está cadastrado!');
+      this.isExisting = true;
+      this.alertComponent.showAlert('Error');
       console.error('Erro ao se candidatar:', error);
+     setTimeout(() => {
+  const errorElement = document.querySelector('.error');
+  console.log('Error Element:', errorElement); // Verifique se o elemento está sendo encontrado
+
+  if (errorElement) {
+    errorElement.classList.add('hidden');
+    console.log('Classe hidden adicionada');
+  }
+
+  setTimeout(() => {
+    this.isExisting = false;
+    console.log('isExisting set to false');
+  }, 1000);
+}, 5000);
+
+
     }
   );
 }

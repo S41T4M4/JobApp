@@ -19,7 +19,16 @@
       </a>
       <span>Vagas Aplicadas</span>
     </button>
+   <button mat-icon-button (click)="logout()">
+     <mat-icon>logout</mat-icon>
+     <span>Logout</span>
+   </button>
+    <button mat-icon-button>
+       <span>{{perfilType}}</span>
+      <mat-icon>person</mat-icon>
+      <span>{{perfilName}}</span>
 
+    </button>
 
   </div>
 </mat-toolbar>

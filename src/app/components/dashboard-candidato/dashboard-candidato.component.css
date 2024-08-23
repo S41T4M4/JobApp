@@ -17,6 +17,37 @@
   height: 90px;
 
 }
+.sucsess {
+  position: fixed;
+  top: 0;
+  left: 52%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  padding: 10px;
+
+}
+
+.sucsess.hidden {
+  opacity: 0;
+}
+
+.error {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* Aumente o z-index para garantir que esteja acima de outros elementos */
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 5px;
+}
+.error.hidden{
+  opacity: 0;
+}
+
 
 #apply-button{
    background-color: #c3fcb9ce;

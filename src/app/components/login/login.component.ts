@@ -1,5 +1,6 @@
 import { AuthService } from './../../auth.service';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -25,13 +26,15 @@ cadastroUser ={
 
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+
+  constructor(private authService: AuthService, private router: Router , private formBuilder : FormBuilder) {
+  }
 
 
   login() {
     //debugger
 
-      this.authService.login(this.email, this.senha, this.perfil, this.id).subscribe(response => {
+      this.authService.login(this.email, this.senha, this.perfil, this.id, this.nome).subscribe(response => {
       console.log('Login bem-sucedido:', response);
       if (response.perfil === 'Recrutador') {
         this.router.navigate(['/dashboard-recrutador']);
