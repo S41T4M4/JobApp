@@ -36,7 +36,7 @@ isLoading: boolean = true;
     );
   }
   deletCandidatura(id : number):void{
-    if(confirm('Tem certeza de que deseja excluir sua candidaturaa !'))
+    if(confirm('Tem certeza de que deseja excluir sua candidatura ?'))
       {
     this.authService.deleteCandidatura(id).subscribe(
      ()=>{

@@ -11,11 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 export class CandidatosEmVagasComponent implements OnInit {
   candidatos: Candidatura[] = [];
   isLoading: boolean = true;
-
+alertExists: boolean = false;
+alertMessage = '';
+backGroundColor = '';
+fontColor = '';
   constructor(private authService: AuthService , private routeA : ActivatedRoute) {}
 
   ngOnInit(): void {
-    const idRecrutador = Number(localStorage.getItem('id'));
+
     const idVaga = this.routeA.snapshot.paramMap.get('id')!;
     this.loadCandidatos(parseInt(idVaga));
   }
@@ -35,10 +38,25 @@ export class CandidatosEmVagasComponent implements OnInit {
   alterarStatus(idCandidatura: number, novoStatus: string): void {
     this.authService.updateStatusCandidatura(idCandidatura, novoStatus).subscribe(
       () => {
-
+        this.alertExists = true;
         const candidatura = this.candidatos.find(c => c.id === idCandidatura);
         if (candidatura) {
           candidatura.status = novoStatus;
+          if(novoStatus == 'Aprovado'){
+            this.fontColor = 'black'
+            this.backGroundColor = '#8bbe1b';
+            this.alertMessage = 'Candidatura aprovada com sucesso!';
+          }
+          else if (novoStatus == 'Pendente'){
+            this.fontColor = 'black'
+            this.backGroundColor = '#eed202';
+            this.alertMessage = 'Candidatura foi alterada para pendente';
+          }
+          else{
+            this.fontColor = '#ffffff'
+            this.backGroundColor = '#8b0000';
+            this.alertMessage = 'Candidatura Rejeitada'
+          }
         }
       },
       (error) => {

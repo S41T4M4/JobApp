@@ -89,21 +89,19 @@ applyVaga(vagaId: number): void {
       this.isExisting = true;
       this.alertComponent.showAlert('Error');
       console.error('Erro ao se candidatar:', error);
-     setTimeout(() => {
-  const errorElement = document.querySelector('.error');
-  console.log('Error Element:', errorElement); // Verifique se o elemento está sendo encontrado
+      setTimeout(() => {
+      const errorElement = document.querySelector('.error');
+      console.log('Error Element:', errorElement);
 
   if (errorElement) {
     errorElement.classList.add('hidden');
-    console.log('Classe hidden adicionada');
   }
 
   setTimeout(() => {
     this.isExisting = false;
-    console.log('isExisting set to false');
+
   }, 1000);
 }, 5000);
-
 
     }
   );

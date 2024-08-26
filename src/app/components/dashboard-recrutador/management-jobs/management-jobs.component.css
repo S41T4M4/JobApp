@@ -5,8 +5,8 @@
    align-content: center;
 }
 .container{
-  top: 10%;
-  left: 3%;
+  top: 2%;
+  left: 0%;
   margin: auto;
   width: 50%;
 
@@ -128,3 +128,7 @@ button#cancel-button:hover {
   box-shadow: 2 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.hidden{
+  display: none;
+
+}

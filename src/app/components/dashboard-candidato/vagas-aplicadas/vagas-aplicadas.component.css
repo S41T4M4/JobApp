@@ -1,5 +1,5 @@
 .postagem-card {
-  left: 3%;
+  left: 0%;
   max-width: 500px;
   max-height: 700px;
   margin: 20px auto;
@@ -58,7 +58,7 @@ button {
   border: none;
   border-radius: 4px;
   color: #ffffff;
-  background-color: #dc3545;
+  background-color: #9a0615;
   cursor: pointer;
   font-size: 0.875em;
 }
@@ -69,24 +69,11 @@ button img {
   margin-right: 8px;
 }
 
-#edit-button {
-  background-color: #007bff;
+
+
+#delete-candidatura:hover{
+  background-color: #c21526;
 }
-
-#delete-button {
-  background-color: #dc3545;
-}
-
-
-
-
-#view-button{
- background-color: #a30514;
-}
-#view-button:hover {
-  background-color: #eb1f18;
-}
-
 .status-style{
   cursor:default;
   width: 90px;

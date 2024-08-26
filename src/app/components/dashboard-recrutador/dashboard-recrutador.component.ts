@@ -24,6 +24,19 @@ export class DashboardRecrutadorComponent implements OnInit {
     status: '',
     id_recrutador: 0,
   };
+    resetForm(): void {
+    this.tempVaga = {
+      id: 0,
+      titulo: '',
+      descricao: '',
+      requisitos: '',
+      salario: 0,
+      localizacao: '',
+      status: '',
+      id_recrutador: 0,
+    };
+    this.selectedVaga = null;
+  }
 
   constructor(private authService: AuthService) { }
 
@@ -45,18 +58,7 @@ export class DashboardRecrutadorComponent implements OnInit {
     );
   }
 
-  addVaga(): void {
-    this.authService.postVagas(this.tempVaga).subscribe(
-      () => {
-        this.loadVagas();
-        this.resetForm();
-      },
-      (error) => {
-        console.error('Erro ao adicionar vaga', error);
-      }
-    );
-  }
-
+ //
   editVaga(vaga: Vaga): void {
     this.selectedVaga = vaga;
     this.tempVaga = { ...vaga };
@@ -81,8 +83,8 @@ export class DashboardRecrutadorComponent implements OnInit {
     if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
       this.authService.deleteVagas(id).subscribe(
         () => {
-
-          this.vagas = this.vagas.filter(v => v.id !== id); // Remove a vaga da lista local
+          //Retornar um array que contém todas as vagas no qual o id é diferente do id apagado
+          this.vagas = this.vagas.filter(v => v.id !== id);
           console.log('Vaga excluída com sucesso!');
         },
         (error) => {
@@ -92,21 +94,9 @@ export class DashboardRecrutadorComponent implements OnInit {
     }
   }
 
-  resetForm(): void {
-    this.tempVaga = {
-      id: 0,
-      titulo: '',
-      descricao: '',
-      requisitos: '',
-      salario: 0,
-      localizacao: '',
-      status: '',
-      id_recrutador: 0,
-    };
-    this.selectedVaga = null;
-  }
+
 
   cancelEdit(): void {
-    this.resetForm(); // Limpar seleção e formulário
+    this.resetForm();
   }
 }

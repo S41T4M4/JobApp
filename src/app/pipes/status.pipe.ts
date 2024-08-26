@@ -6,14 +6,14 @@ import { PipeTransform , Pipe} from "@angular/core";
 export class StatusPipe implements PipeTransform{
    transform(status: string): string{
     if(status == 'Aprovado'){
-      return 'Aprovado!! ✅';
+      return '✅';
     }
     else if(status == 'Reprovado'){
-     return 'Reprovado 😕 '
+     return '😕 '
 
     }
     else{
-      return 'Pendente ⌛';
+      return '⌛';
     }
 
    }

@@ -1,8 +1,6 @@
 <mat-toolbar class="toolbar">
   <div class="toolbar-left">
-    <a mat-icon-button class="logo">
-      BRINKEDIN
-    </a>
+    <a mat-icon-button class="logo">BRINKEDIN</a>
   </div>
 
   <div class="toolbar-middle">
@@ -19,17 +17,18 @@
       </a>
       <span>Vagas Aplicadas</span>
     </button>
-   <button mat-icon-button (click)="logout()">
-     <mat-icon>logout</mat-icon>
-     <span>Logout</span>
-   </button>
-    <button mat-icon-button>
-       <span>{{perfilType}}</span>
+
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </div>
+
+  <div class="toolbar-right">
+    <button mat-icon-button class="profile-container">
+      <span>{{perfilType}}</span>
       <mat-icon>person</mat-icon>
       <span>{{perfilName}}</span>
-
     </button>
-
   </div>
 </mat-toolbar>
-

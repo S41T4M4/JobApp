@@ -26,7 +26,6 @@ export class ManagementJobsComponent implements OnInit {
   requiredLocal = 'O campo de local é obrigatorio !!';
   requiredStatus = 'O campo de status é obrigatorio !!'
   isDisabled = false;
-
   formatIncorrectMessage = 'Campos não foram preenchidos da maneira correta';
   formatFieldsRequired = 'É necessario preencher todos os campos'
   isSubmitted = false;
@@ -34,10 +33,8 @@ export class ManagementJobsComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-
     this.id_recrutador = Number(localStorage.getItem('id'));
     this.initializeForm();
-
     console.log(this.id_recrutador)
   }
 
@@ -48,7 +45,7 @@ export class ManagementJobsComponent implements OnInit {
       requisitos: ['', Validators.required],
       salario: [0, [Validators.required, salaryRangeValidator(500, 100000)]],
       localizacao: ['', Validators.required],
-      status: ['', Validators.required],
+      status: ['Aberta', Validators.required],
       id_recrutador: [this.id_recrutador]
     });
   }
@@ -73,25 +70,7 @@ export class ManagementJobsComponent implements OnInit {
   }
 
 
-  loadVagas(): void {
-    try{
-      this.authService.getVagas().subscribe(
-      (data: Vaga[]) => {
-        this.vagas = data;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Erro ao carregar vagas', error);
-        this.isLoading = false;
-      }
-    );
-    }catch (error){
-      if(error instanceof Error){
-        this.error=error;
-      }
-    }
-
-  }
+//
 
   addVaga(): void {
      this.isSubmitted = true;
@@ -99,12 +78,12 @@ export class ManagementJobsComponent implements OnInit {
       console.log('Dados da Vaga:', this.vagaForm.value);
       this.authService.postVagas(this.vagaForm.value).subscribe(
         () => {
-          this.loadVagas();
+      //    this.loadVagas();
           this.vagaForm.reset();
           this.isSubmitted = false;
         },
         (error) => {
-          this.alertComponent.showAlert("Algum erro");
+
           console.error('Erro ao adicionar vaga', error);
         }
       );

@@ -1,18 +1,14 @@
 <mat-toolbar class="toolbar">
   <div class="toolbar-left">
-    <a mat-icon-button class="logo">
-      BRINKEDIN
-    </a>
+    <a mat-icon-button class="logo">BRINKEDIN</a>
   </div>
 
   <div class="toolbar-middle">
     <button mat-icon-button class="button-class">
       <a routerLink="/dashboard-recrutador">
         <mat-icon>home</mat-icon>
-
       </a>
       <span>Início</span>
-
     </button>
 
     <button mat-icon-button>
@@ -28,14 +24,17 @@
       </a>
       <span>Criar Vaga</span>
     </button>
+
     <button mat-icon-button (click)="logout()">
-        <mat-icon>logout</mat-icon>
-        <span>Logout</span>
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
     </button>
-    <button mat-icon-button>
+  </div>
+
+  <div class="toolbar-right">
+    <button mat-icon-button class="profile-container">
       <mat-icon>person</mat-icon>
       <span>{{perfilName}}</span>
-
     </button>
   </div>
 </mat-toolbar>

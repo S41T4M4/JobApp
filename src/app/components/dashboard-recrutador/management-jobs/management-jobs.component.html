@@ -2,7 +2,7 @@
 <div class="erro" *ngIf="isSubmitted && vagaForm.invalid" >
   <app-alerts
   [message]="formatIncorrectMessage"
-  [alertStyles]="{'background-color':'#ffffe0' , 'font-size' : '20px'}"
+  [alertStyles]="{'background-color':'#cd5c5c ' , 'font-size' : '20px'}"
   [show]="true"
   ></app-alerts>
 
@@ -10,7 +10,7 @@
 <div class="required" *ngIf="vagaForm.invalid" >
     <app-alerts
     [message]="formatFieldsRequired"
-    [alertStyles]="{'background-color' : 'gray'}"
+    [alertStyles]="{'background-color' : '#ffffe0'}"
     [show]="true"
     ></app-alerts>
   </div>
@@ -40,7 +40,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Requisitos</mat-label>
-        <input matInput id="requisitos" formControlName="requisitos" />
+        <textarea matInput id="requisitos" formControlName="requisitos"></textarea>
         <div class="invalid-forms" *ngIf="requisitos.invalid">
           {{requiredRequisitos}}
         </div>
@@ -63,7 +63,7 @@
         </div>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="hidden">
         <mat-label>Status</mat-label>
         <mat-select id="status" formControlName="status">
           <mat-option value="Aberta">Aberta</mat-option>
@@ -71,8 +71,8 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-raised-button class="create" type="submit"   >
-          Adicionar
+      <button mat-raised-button class="create" type="submit">
+          Add
       </button>
     <div>
 

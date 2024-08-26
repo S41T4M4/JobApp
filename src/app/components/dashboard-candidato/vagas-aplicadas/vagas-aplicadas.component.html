@@ -22,7 +22,7 @@
          <h1>{{ candidato.status | status}}</h1>
       <div class="button-group">
         <button id="delete-candidatura" (click)="deletCandidatura(candidato.id)" title="Retirar Candidatura">
-             Desistir da Candidatura
+             <mat-icon>close</mat-icon>
         </button>
       </div>
       <h4 [ngSwitch]="candidato.status">
