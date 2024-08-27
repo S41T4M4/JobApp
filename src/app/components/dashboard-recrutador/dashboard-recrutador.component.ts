@@ -68,8 +68,8 @@ export class DashboardRecrutadorComponent implements OnInit {
     if (this.selectedVaga) {
       this.authService.updateVagas(this.selectedVaga.id, this.tempVaga).subscribe(
         () => {
-          this.loadVagas(); // Recarregar a lista de vagas
-          this.resetForm(); // Limpar seleção e formulário
+          this.loadVagas();
+          this.resetForm();
           },(error) => {
           this.error = 'Não é possivel colocar esse salário', error;
           console.error('Erro ao atualizar vaga', error);
@@ -83,7 +83,7 @@ export class DashboardRecrutadorComponent implements OnInit {
     if (confirm('Tem certeza de que deseja excluir esta vaga?')) {
       this.authService.deleteVagas(id).subscribe(
         () => {
-          //Retornar um array que contém todas as vagas no qual o id é diferente do id apagado
+          //Retorna todas as vagas, tirando a apagada
           this.vagas = this.vagas.filter(v => v.id !== id);
           console.log('Vaga excluída com sucesso!');
         },

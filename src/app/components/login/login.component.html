@@ -1,11 +1,30 @@
 <html>
 <div class="body">
   <head>
-    <title>Slide Navbar</title>
-    <link rel="stylesheet" type="text/css" href="login.component.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="notify-login" *ngIf="isLogged == true">
+      <app-alerts
+      [message]="message"
+      [alertStyles]="{
+        'background-color': '#8b0000' , 'color' : 'white'
+      }"
+      >
+
+      </app-alerts>
+    </div>
+    <div class="notify-login" *ngIf="userAlreadyExists == true">
+      <app-alerts
+      [message]="message"
+      [alertStyles]="{
+        'background-color' : 'gray'
+      }"
+      >
+
+      </app-alerts>
+    </div>
     <div class="main">
       <input type="checkbox" id="chk" aria-hidden="true">
 

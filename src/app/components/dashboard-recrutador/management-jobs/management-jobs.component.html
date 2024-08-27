@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="erro" *ngIf="isSubmitted && vagaForm.invalid" >
+<div class="erro" *ngIf="isSubmitted" >
   <app-alerts
   [message]="formatIncorrectMessage"
   [alertStyles]="{'background-color':'#cd5c5c ' , 'font-size' : '20px'}"
@@ -70,9 +70,12 @@
 
         </mat-select>
       </mat-form-field>
+   <span>
 
+   </span>
       <button mat-raised-button class="create" type="submit">
-          Add
+          <img src="/adicionar.png">
+
       </button>
     <div>
 

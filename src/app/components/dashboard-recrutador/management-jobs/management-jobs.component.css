@@ -11,33 +11,40 @@
   width: 50%;
 
 }
+.container button{
+  width: 90%;
+  margin: 10px;
+
+}
 #title{
   font-size: 24px;
 }
 .create{
-  background-color: #0fd415;
+
+  background-color: white;
+  border: 0px solid  black ;
 }
 
 .create:hover{
-  background-color: #007706;
+  background-color: #ffffff;
 }
 .create img{
+
   align-items: center;
   cursor: pointer;
-  height: 20px;
+  height: 40px;
 }
 .title{
   font-size: 24px;
   text-align: center;
 }
 .invalid-forms{
-  color: red;
+  color: rgb(174, 7, 7);
   font-size: 12px;
 }
 
 
 .container {
-
   display: flex;
   max-width: 400px;
   margin: 0 auto;

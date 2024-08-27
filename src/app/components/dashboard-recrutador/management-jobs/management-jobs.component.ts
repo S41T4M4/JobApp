@@ -26,7 +26,7 @@ export class ManagementJobsComponent implements OnInit {
   requiredLocal = 'O campo de local é obrigatorio !!';
   requiredStatus = 'O campo de status é obrigatorio !!'
   isDisabled = false;
-  formatIncorrectMessage = 'Campos não foram preenchidos da maneira correta';
+  formatIncorrectMessage = '';
   formatFieldsRequired = 'É necessario preencher todos os campos'
   isSubmitted = false;
   isHidden= false;
@@ -43,7 +43,7 @@ export class ManagementJobsComponent implements OnInit {
       titulo: ['', Validators.required],
       descricao: ['', Validators.required],
       requisitos: ['', Validators.required],
-      salario: [0, [Validators.required, salaryRangeValidator(500, 100000)]],
+      salario: [500, [Validators.required, salaryRangeValidator(499, 100000)]],
       localizacao: ['', Validators.required],
       status: ['Aberta', Validators.required],
       id_recrutador: [this.id_recrutador]
@@ -83,8 +83,14 @@ export class ManagementJobsComponent implements OnInit {
           this.isSubmitted = false;
         },
         (error) => {
-
-          console.error('Erro ao adicionar vaga', error);
+          if(error.status === 400){
+            this.isSubmitted = true;
+            this.formatIncorrectMessage = 'Nem todos os dados foram preenchidos'
+            console.log('Erro 400 ao cadastrar vaga:', error.error);
+          }
+           this.isSubmitted = true;
+          this.formatIncorrectMessage = 'Nem todos os dados foram preenchidos corretamente !'
+          console.error('Erro inesperado ' , error);
         }
       );
     }

@@ -56,7 +56,17 @@ select{
   width: 57%;
   height: 40px;
 }
-
+.notify-login{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 button {
   width: 60%;
