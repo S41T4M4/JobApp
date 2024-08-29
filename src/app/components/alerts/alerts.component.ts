@@ -9,6 +9,8 @@ export class AlertsComponent {
 @Input() message : string = '';
  @Input() alertStyles: { [key: string]: string } = {};
  @Input() show: boolean = false;
+ 
+ 
   showAlert(message: string) {
     this.message = message;
   }

@@ -23,8 +23,11 @@
     "@coreui/angular": "^5.2.13",
     "@coreui/coreui": "^5.1.2",
     "@coreui/icons-angular": "^5.2.13",
+    "@costlydeveloper/ngx-awesome-popup": "^3.2.2",
     "@types/jquery": "^3.5.30",
     "jquery": "^3.7.1",
+    "ng-confirm-box": "^0.1.1",
+    "primeng": "^17.18.9",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

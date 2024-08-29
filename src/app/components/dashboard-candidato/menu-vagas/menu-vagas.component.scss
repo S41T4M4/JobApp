@@ -20,6 +20,15 @@
   align-items: center;
   flex: 1;
 }
+.confirm{
+position:fixed;
+top: 1%;
+left: 50%;
+transform: translateX(-50%);
+z-index: 1050;
+transition: opacity 1s ease-out;
+
+}
 
 .toolbar-right {
   display: flex;

@@ -11,6 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DashboardRecrutadorComponent implements OnInit {
   vagas: Vaga[] = [];
   error = 'O campo é obrigatorio';
+  message = '';
+  color = '';
+  fontColor = '';
+  editMode = false;
   vagaForm!: FormGroup;
   selectedVaga: Vaga | null = null;
   isLoading: boolean = true;
@@ -60,6 +64,11 @@ export class DashboardRecrutadorComponent implements OnInit {
 
  //
   editVaga(vaga: Vaga): void {
+
+    this.editMode = true;
+    this.message='Modo edição'
+    this.color = '#afeeee'
+    this.fontColor = '#000000';
     this.selectedVaga = vaga;
     this.tempVaga = { ...vaga };
   }
@@ -68,10 +77,18 @@ export class DashboardRecrutadorComponent implements OnInit {
     if (this.selectedVaga) {
       this.authService.updateVagas(this.selectedVaga.id, this.tempVaga).subscribe(
         () => {
+          this.editMode = false;
           this.loadVagas();
           this.resetForm();
+
           },(error) => {
-          this.error = 'Não é possivel colocar esse salário', error;
+            if(error.status === 400){
+              this.message = 'Erro ao atualizar vaga';
+              this.color = '#8b0000';
+              this.fontColor = '#ffffff';
+            }
+       
+
           console.error('Erro ao atualizar vaga', error);
         }
       );
@@ -88,7 +105,17 @@ export class DashboardRecrutadorComponent implements OnInit {
           console.log('Vaga excluída com sucesso!');
         },
         (error) => {
-          console.error('Erro ao excluir vaga', error);
+          if(error.error = 400){
+            this.editMode = true;
+            this.message = 'Não é possivel excluir se existir candidatos na vaga';
+            this.color = '#8b0000'
+            this.fontColor ='#ffffff'
+            console.log("Não é possivel excluir se existir candidatos na vaga")
+          }
+          else{
+           console.error('Erro ao excluir vaga', error);
+          }
+
         }
       );
     }
@@ -97,6 +124,7 @@ export class DashboardRecrutadorComponent implements OnInit {
 
 
   cancelEdit(): void {
+    this.editMode = false;
     this.resetForm();
   }
 }

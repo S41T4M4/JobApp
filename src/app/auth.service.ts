@@ -26,6 +26,7 @@ export class AuthService {
       })
     );
   }
+  
   postUsuario(email: string, senha: string, perfil: string, nome: string):Observable<any>{
     const usuarioViewModel = { email, senha, perfil ,nome};
      return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/usuarios`, usuarioViewModel)
@@ -39,7 +40,6 @@ export class AuthService {
   getVagas(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas`);
   }
-
   getVagasAbertas(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/status/aberta`);
   }

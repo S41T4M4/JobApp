@@ -1,22 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-constructor(private router: Router) { }
+  isLogout: boolean = false;
+  perfilName: string = localStorage.getItem('nome') || '';
+  showAlert!: boolean;
+  confirmLogout!: boolean;
+  cancelLogout!: boolean;
+ message = '';
+  constructor(private router: Router) { }
 
-perfilName: string = localStorage.getItem('nome')||'';
-
-
-logout(){
-  if(window.confirm("U really want to do that ?")){
-     localStorage.removeItem('token');
-  this.router.navigate(['/login']);
+  logout() {
+    this.showAlert = true;
+    this.message = 'Você tem certeza que deseja sair ?';
   }
-  console.log("Logout canceled");
+  closeAlert() {
+    this.showAlert = false;
+  }
 
-}
+  performLogout() {
+   if(this.confirmLogout = true){
+
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+   }
+   else{
+    this.cancelLogout = true;
+   }
+
+  }
 }

@@ -19,8 +19,19 @@
 
 
 }
+.alert{
+position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  transition: opacity 1s ease-out;
+  opacity: 1;
+
+  border: 1px solid black;
+}
 .mat-card-header, .mat-card-content, mat-card-footer {
-     font-family: "Roboto Mono";
+  font-family: "Roboto Mono";
   box-sizing: border-box;
 }
 

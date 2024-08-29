@@ -1,0 +1,6 @@
+<div *ngIf="show" class="alert-box">
+  <p>{{ message }}</p>
+  <button  (click)="onConfirm()"><mat-icon>check</mat-icon></button>
+  <button  (click)="onCancel()">
+    <mat-icon>close</mat-icon></button>
+</div>

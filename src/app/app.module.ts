@@ -32,7 +32,8 @@ import { StatusPipe } from './pipes/status.pipe';
 import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { AlertModule } from '@coreui/angular';
-
+import { NgConfirmModule} from 'ng-confirm-box';
+import { BoxConfirmComponent } from './components/box-confirm/box-confirm.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +48,8 @@ import { AlertModule } from '@coreui/angular';
     VagasAplicadasComponent,
     StatusPipe,
     WrongPageComponent,
-    AlertsComponent
-
-
-
-
-
-
+    AlertsComponent,
+    BoxConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +70,8 @@ import { AlertModule } from '@coreui/angular';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
-    AlertModule
+    AlertModule,
+    NgConfirmModule
 
   ],
   providers: [

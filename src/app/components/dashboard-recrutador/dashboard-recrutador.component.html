@@ -2,6 +2,16 @@
 <div *ngIf="isLoading">...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">
+  <div class="alert" *ngIf="editMode == true">
+    <app-alerts
+    [message]="message"
+    [alertStyles]="{
+      'background-color': color, 'color' : fontColor
+    }"
+    >
+
+    </app-alerts>
+  </div>
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
       <mat-card-title>

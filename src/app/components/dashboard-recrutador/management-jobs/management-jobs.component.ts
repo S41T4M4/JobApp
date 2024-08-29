@@ -16,9 +16,8 @@ export class ManagementJobsComponent implements OnInit {
   vagas: Vaga[] = [];
   isLoading: boolean = true;
   id_recrutador: number = 0;
-  error: Error | null = null
+
   vagaForm!: FormGroup;
-  erro = '';
   requiredTitulo = 'O campo de titulo é obrigatorio !!'
   requiredDescription = 'O campo de descrição é obrigatorio !!';
   requiredRequisitos='O campo de requisitos é obrigatorio ';
@@ -26,7 +25,6 @@ export class ManagementJobsComponent implements OnInit {
   requiredLocal = 'O campo de local é obrigatorio !!';
   requiredStatus = 'O campo de status é obrigatorio !!'
   isDisabled = false;
-  formatIncorrectMessage = '';
   formatFieldsRequired = 'É necessario preencher todos os campos'
   isSubmitted = false;
   isHidden= false;
@@ -69,30 +67,49 @@ export class ManagementJobsComponent implements OnInit {
     return this.vagaForm.get('status')!;
   }
 
-
-//
-
-  addVaga(): void {
-     this.isSubmitted = true;
-    if (this.vagaForm.valid) {
-      console.log('Dados da Vaga:', this.vagaForm.value);
-      this.authService.postVagas(this.vagaForm.value).subscribe(
-        () => {
-      //    this.loadVagas();
-          this.vagaForm.reset();
-          this.isSubmitted = false;
-        },
-        (error) => {
-          if(error.status === 400){
-            this.isSubmitted = true;
-            this.formatIncorrectMessage = 'Nem todos os dados foram preenchidos'
-            console.log('Erro 400 ao cadastrar vaga:', error.error);
-          }
-           this.isSubmitted = true;
-          this.formatIncorrectMessage = 'Nem todos os dados foram preenchidos corretamente !'
-          console.error('Erro inesperado ' , error);
-        }
-      );
+   loadVagas(): void {
+    try{
+      this.authService.getVagas().subscribe(
+      (data: Vaga[]) => {
+        this.vagas = data;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Erro ao carregar vagas', error);
+        this.isLoading = false;
+      }
+    );
+    }catch (error){
+        console.log(error);
     }
+
   }
+
+addVaga(): void {
+  if (this.vagaForm.valid) {
+    console.log('Dados da Vaga:', this.vagaForm.value);
+    this.authService.postVagas(this.vagaForm.value).subscribe(
+      () => {
+        this.loadVagas();
+
+        // Reseta o formulário mas mantém o id_recrutador e os validadores
+        this.vagaForm.reset({
+          titulo: '',
+          descricao: '',
+          requisitos: '',
+          salario: 500,
+          localizacao: '',
+          status: 'Aberta',
+          id_recrutador: this.id_recrutador
+        });
+
+        this.isSubmitted = false;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+}
+
 }

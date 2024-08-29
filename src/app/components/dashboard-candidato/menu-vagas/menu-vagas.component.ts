@@ -13,20 +13,34 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrl: './menu-vagas.component.scss'
 })
 export class MenuVagasComponent {
+    showAlert!: boolean;
+  confirmLogout!: boolean;
+  cancelLogout!: boolean;
+ message = '';
 constructor(private router: Router) { }
-logout(){
-  if(window.confirm("U really want to do that ?")){
-     localStorage.removeItem('token');
-  this.router.navigate(['/login']);
-  }
-  console.log("Logout canceled");
-
-}
 perfilName: string = localStorage.getItem('nome')||'';
 perfilType : string = localStorage.getItem('perfil')|| '';
 getPerfil(){
   return localStorage.getItem('perfil')
 
 }
+  logout() {
+    this.showAlert = true;
+    this.message = 'Você tem certeza que deseja sair ?';
+  }
+  closeAlert() {
+    this.showAlert = false;
+  }
 
+  performLogout() {
+   if(this.confirmLogout = true){
+
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+   }
+   else{
+    this.cancelLogout = true;
+   }
+
+  }
 }

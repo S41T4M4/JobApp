@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-candidatos-em-vagas',
   templateUrl: './candidatos-em-vagas.component.html',
+  
   styleUrls: ['./candidatos-em-vagas.component.css']
 })
 export class CandidatosEmVagasComponent implements OnInit {

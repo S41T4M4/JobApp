@@ -1,19 +1,20 @@
 <app-menu></app-menu>
-<div class="erro" *ngIf="isSubmitted" >
-  <app-alerts
-  [message]="formatIncorrectMessage"
-  [alertStyles]="{'background-color':'#cd5c5c ' , 'font-size' : '20px'}"
-  [show]="true"
-  ></app-alerts>
-
-</div>
-<div class="required" *ngIf="vagaForm.invalid" >
+<div class="required" *ngIf="vagaForm.invalid ; else posted" >
     <app-alerts
     [message]="formatFieldsRequired"
     [alertStyles]="{'background-color' : '#ffffe0'}"
-    [show]="true"
+    [show]="isHidden"
     ></app-alerts>
   </div>
+  <ng-template #posted>
+    <div class="posted" *ngIf="vagaForm.valid">
+    <app-alerts
+    [message]="'Correct format'"
+    [alertStyles]="{'background-color' : '#98fb98'}"
+    [show]="true"
+    ></app-alerts>
+    </div>
+  </ng-template>
 
 
 <mat-card class="container">
@@ -73,9 +74,8 @@
    <span>
 
    </span>
-      <button mat-raised-button class="create" type="submit">
+      <button mat-raised-button class="create" type="submit" >
           <img src="/adicionar.png">
-
       </button>
     <div>
 
