@@ -3,9 +3,10 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Altera de center para flex-start para mover o conteúdo para cima */
   min-height: 100vh;
   background-color: #ffffff;
+  padding-top: 5px;
 }
 
 .main {
@@ -14,9 +15,14 @@ body {
   background: linear-gradient(to bottom, #024066, #195974, #487ab3);
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 5px 20px 50px #084660;
+
   justify-content: center;
   align-items: center;
+  margin-top: 60px;
+}
+
+#cadastrar-se {
+  color: #fff9c7;
 }
 
 #chk {
@@ -36,11 +42,16 @@ label {
   display: flex;
   margin: 50px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: default;
   transition: 0.5s ease-in-out;
+}
+label:hover{
+  transform: scale(1.1);
+
 }
 
 input, select {
+
   width: 50%;
   height: 14px;
   background: #ffffff;
@@ -52,11 +63,19 @@ input, select {
   outline: none;
   border-radius: 12px;
 }
-select{
+#cadastroo{
+    background-color: #009356;
+}
+#cadastroo:hover{
+     background-color: #03ac65;
+}
+
+select {
   width: 57%;
   height: 40px;
 }
-.notify-login{
+
+.notify-login {
   position: fixed;
   top: 0;
   left: 50%;
@@ -68,17 +87,18 @@ select{
   border-radius: 5px;
 }
 
+/* Estilos gerais do botão */
 button {
-  width: 60%;
-  height: 40px;
-  margin: 10px auto;
+
+  width: 46%;
+  height: 30px;
+  margin: 2px auto; /* Reduz a margem vertical para 5px */
   justify-content: center;
   display: block;
   color: #fff;
-  background: #3b5d8a;
+  background: #1596ff;
   font-size: 1em;
   font-weight: bold;
-  margin-top: 30px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -86,9 +106,134 @@ button {
   cursor: pointer;
   font-family: "Roboto Mono", monospace;
 }
+input{
+  width: 40%;
+  height: 10px;
+  margin: 14px auto;
+}
 
 button:hover {
+   transform: scale(1.1);
   background: #024066;
+}
+#type-empresa{
+  background-color: rgb(220, 201, 115);
+  text-align: center;
+  width: 46%;
+  height: 30px;
+}
+#type-empresa:hover{
+  background-color: rgb(241, 220, 130);
+
+}
+/* Estilos específicos para diferentes botões */
+.choice-btns button,
+.login-form .btn-submit,
+.btn-back {
+  margin-top: 5px; /* Reduz a margem superior */
+  margin-bottom: 5px; /* Reduz a margem inferior */
+}
+.btn-submit{
+  background-color: #009356;
+}
+.btn-submit:hover{
+  color: rgb(0, 0, 0);
+  background-color: #73ca9e;
+}
+
+.choice-btns button {
+  background-color: #088919;
+}
+
+.choice-btns button:hover {
+  color: white;
+  background-color: #024066;
+}
+.btn-choice button{
+  margin-top: 40px;
+  height: 50px;
+  background-color: #008e93;
+}
+#type-candidato {
+  background-color: #008e93;
+}
+button img {
+  width: 30px;  /* Ajuste o tamanho conforme necessário */
+  height: 30px; /* Ajuste o tamanho conforme necessário */
+  display: block;
+  margin: 0 auto;
+}
+
+
+.back-png{
+  width: 40px;  /* Ajuste o tamanho conforme necessário */
+  height: 40px; /* Ajuste o tamanho conforme necessário */
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0) ;
+}
+
+#cadastroBtn{
+  background-color: #008e93;
+}
+#cadastroBtn:hover{
+  background-color: #01c2c9;
+}
+.back-png:hover{
+    transform: scale(1.5);
+  background-color: rgba(255, 255, 255, 0) ;
+}
+
+
+#type-candidato:hover {
+  background-color: #01aab0;
+}
+
+#type-recrutador {
+  background-color: #009356;
+}
+
+#type-recrutador:hover {
+  background-color: #00a761;
+}
+
+.btn-action {
+   background-color: rgb(220, 201, 115);
+  color: #024066;
+}
+
+.btn-action:hover {
+  background-color: rgb(230, 213, 139);
+
+}
+
+.btn-back {
+  width: auto; /* Ajuste a largura conforme necessário */
+  background-color: #06254e;
+  color: white;
+}
+
+.btn-back:hover {
+  background-color: #157bba;
+}
+
+.login-form {
+  margin-top: 10px; /* Ajusta o espaço acima do botão */
+  width: 90%;
+  height: 60%;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
+  position: relative; /* Garante que o botão se alinhe corretamente */
+  display: block; /* Garante que o botão ocupe o espaço correto */
+  margin-left: auto; /* Centraliza o botão horizontalmente */
+  margin-right: auto;
 }
 
 #entrar {
@@ -100,8 +245,9 @@ button:hover {
 }
 
 .login {
-  height: 460px;
-  background: #3b5d8a;
+  height: 100%;
+  width: 100%;
+  background: #091c34;
   border-radius: 60% / 10%;
   transform: translateY(-180px);
   transition: 0.8s ease-in-out;
@@ -109,7 +255,7 @@ button:hover {
 }
 
 .login:hover {
-  background: #157bba;
+  background: #002235;
 }
 
 .login label {

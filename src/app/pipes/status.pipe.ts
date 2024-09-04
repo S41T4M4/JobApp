@@ -9,7 +9,7 @@ export class StatusPipe implements PipeTransform{
       return '✅';
     }
     else if(status == 'Reprovado'){
-     return '😕 '
+     return '😕'
 
     }
     else{

@@ -1,3 +1,4 @@
+import { LocalStorageService } from '@coreui/angular';
 import { AuthService } from './../../auth.service';
 import { Vaga } from './../../vaga.model';
 import { Component, OnInit } from '@angular/core';
@@ -27,6 +28,11 @@ export class DashboardRecrutadorComponent implements OnInit {
     localizacao: '',
     status: '',
     id_recrutador: 0,
+    empresa : {
+      id: 0,
+      nome: '',
+      cnpj: '',
+    }
   };
     resetForm(): void {
     this.tempVaga = {
@@ -38,6 +44,12 @@ export class DashboardRecrutadorComponent implements OnInit {
       localizacao: '',
       status: '',
       id_recrutador: 0,
+      empresa:{
+      id: 0,
+      nome: '',
+      cnpj: '',
+      }
+
     };
     this.selectedVaga = null;
   }
@@ -45,8 +57,21 @@ export class DashboardRecrutadorComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.loadVagas();
+    this.loadVagasByCnpj();
   }
+loadVagasByCnpj(): void {
+    let cnpj = String(localStorage.getItem('cnpj'));
+    this.authService.getVagasByCnpj(cnpj).subscribe(
+        (data: Vaga[]) => {
+            this.vagas = data;
+            this.isLoading = false;
+        },
+        (error: any) => {
+            console.error('Não foi possível carregar as vagas: ' + error);
+        }
+    );
+}
+
 
   loadVagas(): void {
     const recruiterId = Number(localStorage.getItem('id'));
@@ -78,7 +103,7 @@ export class DashboardRecrutadorComponent implements OnInit {
       this.authService.updateVagas(this.selectedVaga.id, this.tempVaga).subscribe(
         () => {
           this.editMode = false;
-          this.loadVagas();
+          this.loadVagasByCnpj();
           this.resetForm();
 
           },(error) => {
@@ -87,7 +112,7 @@ export class DashboardRecrutadorComponent implements OnInit {
               this.color = '#8b0000';
               this.fontColor = '#ffffff';
             }
-       
+
 
           console.error('Erro ao atualizar vaga', error);
         }

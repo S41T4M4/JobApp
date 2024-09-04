@@ -16,7 +16,7 @@ export class ManagementJobsComponent implements OnInit {
   vagas: Vaga[] = [];
   isLoading: boolean = true;
   id_recrutador: number = 0;
-
+  empresa_id: number = 0;
   vagaForm!: FormGroup;
   requiredTitulo = 'O campo de titulo é obrigatorio !!'
   requiredDescription = 'O campo de descrição é obrigatorio !!';
@@ -28,10 +28,15 @@ export class ManagementJobsComponent implements OnInit {
   formatFieldsRequired = 'É necessario preencher todos os campos'
   isSubmitted = false;
   isHidden= false;
+  cnpj: string = '';
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.id_recrutador = Number(localStorage.getItem('id'));
+    this.empresa_id = Number(localStorage.getItem('empresa_id'));
+    this.cnpj = String(localStorage.getItem('cnpj'));
+    console.log('o cnpj da empresa é: ' + this.cnpj);
+    console.log('O id da empresa é : ' + this.empresa_id);
     this.initializeForm();
     console.log(this.id_recrutador)
   }
@@ -44,7 +49,8 @@ export class ManagementJobsComponent implements OnInit {
       salario: [500, [Validators.required, salaryRangeValidator(499, 100000)]],
       localizacao: ['', Validators.required],
       status: ['Aberta', Validators.required],
-      id_recrutador: [this.id_recrutador]
+      id_recrutador: [this.id_recrutador],
+      empresa_id:[this.empresa_id]
     });
   }
 
@@ -86,12 +92,12 @@ export class ManagementJobsComponent implements OnInit {
   }
 
 addVaga(): void {
+
   if (this.vagaForm.valid) {
     console.log('Dados da Vaga:', this.vagaForm.value);
     this.authService.postVagas(this.vagaForm.value).subscribe(
       () => {
         this.loadVagas();
-
         // Reseta o formulário mas mantém o id_recrutador e os validadores
         this.vagaForm.reset({
           titulo: '',
@@ -100,7 +106,8 @@ addVaga(): void {
           salario: 500,
           localizacao: '',
           status: 'Aberta',
-          id_recrutador: this.id_recrutador
+          id_recrutador: this.id_recrutador,
+          empresa_id:this.empresa_id,
         });
 
         this.isSubmitted = false;

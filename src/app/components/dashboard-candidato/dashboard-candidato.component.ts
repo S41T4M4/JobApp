@@ -15,8 +15,8 @@ export class DashboardCandidatoComponent implements OnInit {
 isLoading: boolean = true;
 idCandidato = Number(localStorage.getItem('id'));
 isDisabled = false;
-confirmedCandidatura = 'Parabéns você se Candidatou';
-existingCandidatura = 'Você já se candidatou nessa vaga !';
+confirmedCandidatura = '';
+existingCandidatura = '';
 showAlert = true;
 isSubmitted? : boolean ;
 isExisting? : boolean ;
@@ -82,28 +82,26 @@ applyVaga(vagaId: number): void {
         setTimeout(() => {
           this.isSubmitted = false;
         }, 1000);
-      }, 5000);
+      }, 2000);
 
     },
     error => {
       this.isExisting = true;
-      this.alertComponent.showAlert('Error');
+      this.confirmedCandidatura = 'Você já se candidatou nessa vaga !';
       console.error('Erro ao se candidatar:', error);
+      this.loadVagas();
+
       setTimeout(() => {
       const errorElement = document.querySelector('.error');
-      console.log('Error Element:', errorElement);
-
-  if (errorElement) {
-    errorElement.classList.add('hidden');
-  }
-
+      if (errorElement) {
+        errorElement.classList.add('hidden');
+    }
   setTimeout(() => {
     this.isExisting = false;
-
   }, 1000);
-}, 5000);
+}, 2000);
 
-    }
+}
   );
 }
 }

@@ -1,12 +1,12 @@
 <app-menu-vagas></app-menu-vagas>
 <div class="error" *ngIf="isExisting == true">
 <app-alerts
-[message]="existingCandidatura"
+[message]="confirmedCandidatura"
 [alertStyles]="{'background-color':'#8b0000' , 'color' : 'white'}"
 ></app-alerts>
 
 </div>
-<div class="sucsess" *ngIf="isSubmitted ==true">
+<div class="sucsess" *ngIf="isSubmitted == true">
   <app-alerts
   [message]="confirmedCandidatura"
   [alertStyles]="{'background-color':'#013220' , 'color' : 'white'}"
@@ -52,6 +52,7 @@
        <mat-card-subtitle>Vaga {{ vaga.status }}
 
       </mat-card-subtitle>
+      <mat-card-footer>{{vaga.empresa.nome | uppercase}}</mat-card-footer>
 
 
     </mat-card-footer>

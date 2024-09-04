@@ -140,3 +140,8 @@ button img {
 #save-button:hover{
   background-color: #126525;
 }
+.footer{
+  color: #757575;
+
+  background-color: rgb(255, 255, 255);
+}

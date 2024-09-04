@@ -5,7 +5,7 @@ export interface Candidatura {
   nome_candidato: string | null;
   email_candidato:string;
   titulo_vagas:string;
-
+  nome : string;
 
   status: string;
   data_candidatura: string;
@@ -16,10 +16,17 @@ export interface Candidatura {
     descricao: string;
     status: string;
     salario:number;
+    empresa : {
+      id: number;
+      nome: string;
+      cnpj:string;
+    }
+
   };
   candidato: {
     id: number;
     nome: string;
     email: string;
   };
+
 }

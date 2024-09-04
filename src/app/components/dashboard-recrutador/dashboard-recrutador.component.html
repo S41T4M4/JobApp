@@ -15,7 +15,6 @@
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
     <mat-card-header>
       <mat-card-title>
-
         <span *ngIf="selectedVaga === vaga; else normalView">
           <input [(ngModel)]="tempVaga.titulo" placeholder="Título" />
 
@@ -88,6 +87,11 @@
 
         </ng-template>
       </div>
+      <mat-divider></mat-divider>
+      <mat-card-footer class="footer">
+        <h1>{{vaga.empresa.nome | uppercase}}</h1>
+
+        </mat-card-footer>
     </mat-card-content>
   </mat-card>
 

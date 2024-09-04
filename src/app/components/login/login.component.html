@@ -1,68 +1,139 @@
 <html>
-<div class="body">
-  <head>
+  <div class="body">
+    <head>
+      <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+      <div class="notify-login" *ngIf="isLogged == true">
+        <app-alerts
+          [message]="message"
+          [alertStyles]="{
+            'background-color': backgroundColor , 'color' : 'white'
+          }">
+        </app-alerts>
+      </div>
+      <div class="notify-login" *ngIf="userAlreadyExists == true">
+        <app-alerts
+          [message]="message"
+          [alertStyles]="{
+            'background-color' : backGroundColor , 'color' : color
+          }">
+        </app-alerts>
 
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div class="notify-login" *ngIf="isLogged == true">
-      <app-alerts
-      [message]="message"
-      [alertStyles]="{
-        'background-color': '#8b0000' , 'color' : 'white'
-      }"
-      >
-
-      </app-alerts>
-    </div>
-    <div class="notify-login" *ngIf="userAlreadyExists == true">
-      <app-alerts
-      [message]="message"
-      [alertStyles]="{
-        'background-color' : 'gray'
-      }"
-      >
-
-      </app-alerts>
-    </div>
-    <div class="main">
-      <input type="checkbox" id="chk" aria-hidden="true">
-
-      <div class="signup">
-        <form (ngSubmit)="cadastroUsuario()">
-          <label for="chk" aria-hidden="true">BRINKEDIN</label>
-          <input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
-          <input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
-
-
-          <select name="perfil" required="" [(ngModel)]="perfil">
-            <option value="" disabled selected>Selecione o perfil</option>
-            <option value="Candidato">Candidato</option>
-            <option value="Recrutador">Recrutador</option>
-          </select>
-
-          <input type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
-          <button type="submit" title="Cadastrar-se">Cadastrar-se</button>
-        </form>
       </div>
 
-      <div class="login" title="Entrar com seu Login">
-        <form (ngSubmit)="login()">
-          <label for="chk" aria-hidden="true">Login</label>
-          <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
-          <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+      <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+          <form>
+            <label for="chk" aria-hidden="true">{{titulo}}</label>
+            <div class="label" *ngIf="isLabel == true">
+              <label id="cadastrar-se">Cadastrar-se</label>
+            </div>
+
+            <div class="choice-btns" *ngIf="isChoice == true">
+              <button id="type-candidato" type="button" (click)="cadastroCandidato()">Candidato</button>
+              <button id="type-recrutador" type="button" (click)="cadastroRecrutador()">Recrutador</button>
+               <button id="type-empresa" type="button" (click)="cadastroEmpresaForm()">Empresa</button>
+            </div>
+
+            <!--Cadastro do Recrutador-->
+            <div *ngIf="isRecrutador == true">
+
+              <input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
+              <input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
+              <input type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
+              <input type="text" name="cnpj" placeholder="Cnpj" required="" [(ngModel)]="cnpj">
+              <button id="cadastroo" title="Cadastrar-se" (click)="cadastrarRecrutador()">Cadastrar-se</button>
+
+              <!-- Botão para voltar às escolhas de perfil no cadastro -->
+              <button class="back-png" type="button" (click)="backToCadastroChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+            </div>
+
+            <!--Cadastro do Candidato-->
+            <div *ngIf="isCandidate == true">
+              <input type="email" name="email" placeholder="Email" required="" [(ngModel)]="email">
+              <input type="password" name="pswd" placeholder="Senha" required="" [(ngModel)]="senha">
+              <input type="text" name="nome" placeholder="Nome" required="" [(ngModel)]="nome">
+              <button id="cadastroBtn" title="Cadastrar-se" (click)="cadastroUsuarioCandidato()">Cadastrar-se</button>
+
+              <!-- Botão para voltar às escolhas de perfil no cadastro -->
+              <button class="back-png" type="button" (click)="backToCadastroChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+            </div>
+            <div *ngIf="cadastroEmpresa == true">
+
+              <input type="text" [(ngModel)]="nome" name="nome" placeholder="Nome" required>
+              <input type="text" [(ngModel)]="cnpj" name="cnpj" placeholder="Cnpj" required>
+              <button class="btn-action" type='button' (click)="postEmpresa()">Cadastrar-se</button>
+
+              <!-- Botão para voltar às escolhas de cadastro -->
+              <button class="back-png" type="button" (click)="backToCadastroChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="login">
+          <form (ngSubmit)="login()">
+            <label for="chk" aria-hidden="true">{{titleForm}}</label>
+            <div class="btn-choice" *ngIf="showButtons == true">
+              <button id="type-recrutador"  type="button" (click)="isRecrutier()">Recrutador</button>
+              <button id="type-candidato" type="button" (click)="isCandidato()">Candidato</button>
+            </div>
+
+            <!--Login do Candidato-->
+            <div class="formCandidato" *ngIf="showCandidato == true">
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+              <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+              <button class="btn-submit" type="submit">Entrar</button>
+
+              <!-- Botão para voltar às escolhas de login -->
+              <button class="back-png" type="button" (click)="backToLoginChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+            </div>
+
+            <!--Escolhas de Cadastro ou Login para Recrutador-->
+            <div class="formRecrutador" *ngIf="showFormButtons == true">
 
 
-          <select name="perfil" required="" [(ngModel)]="perfil">
-            <option value="" disabled selected>Selecione o perfil</option>
-            <option value="Candidato">Candidato</option>
-            <option value="Recrutador">Recrutador</option>
-          </select>
+               <div class='login-form' *ngIf="showRecruiter == true">
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+              <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+              <input type="text" [(ngModel)]="cnpj" name="cnpj" placeholder="Cnpj" required>
+              <button class="btn-submit" *ngIf="showLogin" type="submit">Entrar</button>
 
-          <button type="submit">Entrar</button>
-        </form>
+              <!-- Botão para voltar às escolhas de login -->
+              <button class="back-png" type="button" (click)="backToLoginChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+
+              </div>
+            </div>
+
+            <!--Prosseguir login do Recrutador-->
+            <div class='login-form' *ngIf="showRecruiter == true">
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+              <input type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required>
+              <input type="text" [(ngModel)]="cnpj" name="cnpj" placeholder="Cnpj" required>
+              <button class="btn-submit" *ngIf="showLogin" type="submit">Entrar</button>
+
+              <!-- Botão para voltar às escolhas de login -->
+              <button class="back-png" type="button" (click)="backToLoginChoices()">
+                <img src="/back.png" alt="back"/>
+              </button>
+            </div>
+
+            <!--Cadastro de Empresa-->
+
+          </form>
+        </div>
       </div>
-    </div>
-  </body>
-</div>
+    </body>
+  </div>
 </html>

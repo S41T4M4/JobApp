@@ -7,6 +7,13 @@ export interface Vaga {
   localizacao: string;
   status: string;
   id_recrutador: number;
+
+  empresa : {
+    id: number;
+    nome: string;
+    cnpj: string;
+  }
+
 }
 
 

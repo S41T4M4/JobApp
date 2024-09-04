@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Vaga } from './vaga.model';
 import { Candidatura } from './candidaturas.model';
 import { AplicarCandidatura } from './candidatura.model';
+import { Empresa } from './empresa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +16,42 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, senha: string, perfil: string, id : number, nome:string): Observable<any> {
-    const loginViewModel = { email, senha, perfil, id , nome};
+  login(email: string, senha: string, perfil: string, id : number, nome:string , cnpj : string, empresa_id : number): Observable<any> {
+    const loginViewModel = { email, senha, perfil, id , nome, cnpj, empresa_id};
     return this.http.post<any>(`${this.apiUrl}/auth/login`, loginViewModel).pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('perfil', response.perfil);
         localStorage.setItem('id', response.id);
         localStorage.setItem('nome', response.nome);
+        localStorage.setItem('cnpj', response.cnpj);
+        localStorage.setItem('empresa_id', response.empresa_id);
+
+
       })
     );
   }
-  
-  postUsuario(email: string, senha: string, perfil: string, nome: string):Observable<any>{
-    const usuarioViewModel = { email, senha, perfil ,nome};
-     return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/usuarios`, usuarioViewModel)
-  }
+getVagasByCnpj(cnpj: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/jobApplication/vagas/empresa`, {
+        params: { cnpj: cnpj }
+    });
+}
 
+
+ postUsuarioCandidato(nome: string,email: string, senha: string, perfil : string): Observable<any> {
+  const usuarioViewModel = { email, senha, nome , perfil};
+  return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/usuarios`, usuarioViewModel);
+}
+
+postUsuarioRecrutador(email: string, nome: string, senha: string, cnpj: string): Observable<any> {
+  const usuarioViewModel = { email, senha, nome, cnpj };
+  return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/recrutador`, usuarioViewModel);
+}
+
+postEmpresas(nome: string, cnpj: string):Observable<any>{
+  const empresaViewModel = { nome, cnpj };
+  return this.http.post<any>(`${this.apiUrl}/jobApplication/cadastro/empresas`, empresaViewModel);
+}
   getCandidaturas():Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/candidaturas`);
   }
