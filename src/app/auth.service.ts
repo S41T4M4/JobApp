@@ -55,6 +55,12 @@ postEmpresas(nome: string, cnpj: string):Observable<any>{
   getCandidaturas():Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/candidaturas`);
   }
+  getVagasByEmpresa(nome:string):Observable<any>{
+
+    return this.http.get<any>(`${this.apiUrl}/jobApplication/vagas/nomeEmpresa`, {
+      params: { nome: nome }
+    });
+  }
 
 
   getVagas(): Observable<any> {

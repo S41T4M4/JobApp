@@ -20,7 +20,7 @@ existingCandidatura = '';
 showAlert = true;
 isSubmitted? : boolean ;
 isExisting? : boolean ;
-
+nome = '';
 
 // Injeção do serviço de autenticação no construtor
 constructor(private authService: AuthService) { }
@@ -47,6 +47,22 @@ loadVagas(): void {
     }
   );
 }
+vagaByEmpresa(nome:string):void{
+  this.authService.getVagasByEmpresa(nome).subscribe(
+    (data: any[]) => {
+      this.vagas = data;
+      this.isLoading = false;
+    },
+    error =>{
+      console.error('Erro ao carregar vagas:', error);
+    }
+
+  )
+}
+
+
+
+
 
 // Aplica para uma vaga específica
 applyVaga(vagaId: number): void {
@@ -104,4 +120,6 @@ applyVaga(vagaId: number): void {
 }
   );
 }
+
+
 }
