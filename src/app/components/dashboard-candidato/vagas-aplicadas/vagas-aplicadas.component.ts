@@ -21,7 +21,6 @@ isLoading: boolean = true;
 
 
    getCandidaturas(): void {
-
     const candidatoId = Number(localStorage.getItem('id'));
     this.authService.getCandidaturasByIdCandidato(candidatoId).subscribe(
       (data: Candidatura[]) => {

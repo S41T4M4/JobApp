@@ -10,7 +10,6 @@ import { Empresa } from '../../empresa.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-empresa:Empresa[] = []
 isLogged = false;
 message = '';
 userAlreadyExists = false;
@@ -24,7 +23,6 @@ empresa_id:number=0;
 showRecruiter = false;
 showCandidato = false;
 showButtons = true;
-input = '';
 showLogin = false;
 titleForm = 'Login';
 showFormButtons = false;
@@ -69,14 +67,17 @@ login() {
       console.log('Erro no login:', error);
 
       if (error.status === 400) {
-        this.isLogged = true;
-        this.message = 'Campos não preenchidos';
+        this.userAlreadyExists = true;
+        this.message = error.error;
+        this.backGroundColor = '#8b0000'
       } else if (error.status === 401) {
-        this.isLogged = true;
-        this.message = 'Email ou senha inválidos';
+         this.userAlreadyExists = true;
+        this.message = error.error;
+        this.backGroundColor = '#8b0000'
       } else {
-        this.isLogged = true;
-        this.message = 'Email ou senha inválidos';
+        this.userAlreadyExists = true;
+        this.message = error.error;
+        this.backGroundColor = '#8b0000'
       }
     }
   );
@@ -87,7 +88,7 @@ continueLogin(){
 }
 
 cadastroEmpresaForm(){
-   this.titulo = 'Empresa'
+  this.titulo = 'Empresa'
   this.cadastroEmpresa= true;
   this.isChoice = false;
 
@@ -126,13 +127,13 @@ candidato = 'Candidato';
           this.color = '#ffffff'
           this.backGroundColor = '#8b0000'
           this.userAlreadyExists = true;
-          this.message = "Todos os campos precisam ser preencidos";
+          this.message = error.error;
 
         } else if (error.status === 500) {
-          this.message = 'Usuário está faltando informações!';
+          this.message = error.error;
           this.userAlreadyExists = true;
         } else {
-          this.message = 'Erro inesperado ocorreu';
+          this.message = error.error;
         }
       }
     );
@@ -153,17 +154,17 @@ candidato = 'Candidato';
           this.color = '#ffffff'
           this.backGroundColor = '#8b0000'
           this.userAlreadyExists = true;
-          this.message = "Todos os campos precisam ser preencidos";
+          this.message = error.error;
         } else if (error.status === 500) {
           this.color = '#ffffff'
           this.backGroundColor = '#8b0000'
           this.userAlreadyExists = true;
-          this.message = "Todos os campos precisam ser preencidos";
+          this.message = error.error;
         } else {
           this.color = '#ffffff'
           this.backGroundColor = '#8b0000'
           this.userAlreadyExists = true;
-          this.message = "Todos os campos precisam ser preencidos";
+          this.message = error.error;
         }
       }
     );
@@ -174,15 +175,15 @@ postEmpresa() {
     response => {
      console.log("Empresa Cadastrada" , response)
      this.userAlreadyExists = true;
-        this.message = 'Cadastrado com sucesso';
-        this.backGroundColor = '#006400';
-        this.color = '#ffffff';
+     this.message = 'Cadastrado com sucesso';
+     this.backGroundColor = '#006400';
+     this.color = '#ffffff';
     },
     error => {
       this.color = '#ffffff'
       this.backGroundColor = '#8b0000'
       this.userAlreadyExists = true;
-      this.message = "Todos os campos precisam ser preencidos";
+      this.message = error.error;
       console.error(error);
     }
 

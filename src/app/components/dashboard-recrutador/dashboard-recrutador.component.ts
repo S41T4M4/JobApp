@@ -108,7 +108,7 @@ loadVagasByCnpj(): void {
 
           },(error) => {
             if(error.status === 400){
-              this.message = 'Erro ao atualizar vaga';
+              this.message = error.error;
               this.color = '#8b0000';
               this.fontColor = '#ffffff';
             }

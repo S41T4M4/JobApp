@@ -2,7 +2,7 @@
 <div class="required" *ngIf="vagaForm.invalid ; else posted" >
     <app-alerts
     [message]="formatFieldsRequired"
-    [alertStyles]="{'background-color' : '#ffffe0'}"
+    [alertStyles]="{'background-color' : backgroundColor , 'color' :  'white'}"
     [show]="isHidden"
     ></app-alerts>
   </div>
@@ -10,7 +10,7 @@
     <div class="posted" *ngIf="vagaForm.valid">
     <app-alerts
     [message]="'Correct format'"
-    [alertStyles]="{'background-color' : '#98fb98'}"
+    [alertStyles]="{'background-color' : backgroundColor}"
     [show]="true"
     ></app-alerts>
     </div>

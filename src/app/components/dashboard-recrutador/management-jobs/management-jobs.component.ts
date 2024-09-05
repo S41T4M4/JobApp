@@ -29,6 +29,7 @@ export class ManagementJobsComponent implements OnInit {
   isSubmitted = false;
   isHidden= false;
   cnpj: string = '';
+  backgroundColor = '#ffc40c';
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -95,6 +96,8 @@ addVaga(): void {
 
   if (this.vagaForm.valid) {
     console.log('Dados da Vaga:', this.vagaForm.value);
+    this.formatFieldsRequired = 'Vaga publicada com sucesso'
+    this.backgroundColor = '#006400';
     this.authService.postVagas(this.vagaForm.value).subscribe(
       () => {
         this.loadVagas();
@@ -113,7 +116,7 @@ addVaga(): void {
         this.isSubmitted = false;
       },
       (error) => {
-        console.log(error);
+        this.formatFieldsRequired = error.error;
       }
     );
   }

@@ -3,7 +3,7 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Altera de center para flex-start para mover o conteúdo para cima */
+  align-items: flex-start;
   min-height: 100vh;
   background-color: #ffffff;
   padding-top: 5px;
@@ -87,12 +87,12 @@ select {
   border-radius: 5px;
 }
 
-/* Estilos gerais do botão */
+
 button {
 
   width: 46%;
   height: 30px;
-  margin: 2px auto; /* Reduz a margem vertical para 5px */
+  margin: 2px auto;
   justify-content: center;
   display: block;
   color: #fff;
@@ -126,12 +126,12 @@ button:hover {
   background-color: rgb(241, 220, 130);
 
 }
-/* Estilos específicos para diferentes botões */
+
 .choice-btns button,
 .login-form .btn-submit,
 .btn-back {
-  margin-top: 5px; /* Reduz a margem superior */
-  margin-bottom: 5px; /* Reduz a margem inferior */
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .btn-submit{
   background-color: #009356;
@@ -158,16 +158,16 @@ button:hover {
   background-color: #008e93;
 }
 button img {
-  width: 30px;  /* Ajuste o tamanho conforme necessário */
-  height: 30px; /* Ajuste o tamanho conforme necessário */
+  width: 30px;
+  height: 30px;
   display: block;
   margin: 0 auto;
 }
 
 
 .back-png{
-  width: 40px;  /* Ajuste o tamanho conforme necessário */
-  height: 40px; /* Ajuste o tamanho conforme necessário */
+  width: 40px;
+  height: 40px;
   display: block;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0) ;
@@ -208,7 +208,7 @@ button img {
 }
 
 .btn-back {
-  width: auto; /* Ajuste a largura conforme necessário */
+  width: auto;
   background-color: #06254e;
   color: white;
 }
@@ -218,7 +218,7 @@ button img {
 }
 
 .login-form {
-  margin-top: 10px; /* Ajusta o espaço acima do botão */
+  margin-top: 10px;
   width: 90%;
   height: 60%;
   color: #fff;
@@ -230,9 +230,9 @@ button img {
   transition: 0.2s ease-in;
   cursor: pointer;
   font-family: "Roboto Mono", monospace;
-  position: relative; /* Garante que o botão se alinhe corretamente */
-  display: block; /* Garante que o botão ocupe o espaço correto */
-  margin-left: auto; /* Centraliza o botão horizontalmente */
+  position: relative;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
 }
 
