@@ -103,6 +103,22 @@ button {
   cursor: pointer;
   font-size: 0.875em;
 }
+.search-bar {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinha o conteúdo ao centro */
+  gap: 10px; /* Adiciona espaçamento entre o input e o botão */
+}
+
+.search {
+  background-color: #a6ff96;
+  border: 1px solid black;
+  color: #000000;
+  padding: 8px;
+}
+
 
 button img {
   height: 44px;

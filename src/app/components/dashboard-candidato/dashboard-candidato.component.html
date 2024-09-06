@@ -15,12 +15,19 @@
 <div *ngIf="isLoading">Carregando...</div>
 <div *ngIf="!isLoading && vagas.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && vagas.length > 0">
-<div class="search" >
+<div class="search-bar" >
 
-  <input [(ngModel)]="nome"/>
-  <button (click)="vagaByEmpresa(nome)">Buscar</button>
+<input [(ngModel)]="nome"/>
+
+  <button class="search" (click)="vagaByEmpresa(nome)">Search</button>
 </div>
+  <div>
+
+
+
+  </div>
   <mat-card *ngFor="let vaga of vagas" class="postagem-card">
+
     <mat-card-header>
       <mat-card-title>{{ vaga.titulo  | uppercase}}</mat-card-title>
 

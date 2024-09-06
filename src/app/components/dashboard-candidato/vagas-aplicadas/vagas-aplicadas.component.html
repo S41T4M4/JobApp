@@ -3,10 +3,16 @@
 <div *ngIf="isLoading">...</div>
 <div *ngIf="!isLoading && candidatura.length === 0">Nenhuma vaga encontrada.</div>
 <div *ngIf="!isLoading && candidatura.length > 0">
+  <div *ngFor="let candidato of candidatura">
+   <app-box-confirm *ngIf="isDelete == true"
+   [message]="'Você realmente deseja desistir da candidatura ?'"
+  (confirmEvent)="deletCandidatura(candidato.id)"
+  ></app-box-confirm>
+  </div>
+
 
   <mat-card *ngFor="let candidato of candidatura" class="postagem-card">
     <mat-card-header>
-
       <mat-card-title>{{ candidato.vaga.titulo }}</mat-card-title>
       <mat-card-subtitle>Status: {{ candidato.vaga.status }}</mat-card-subtitle>
     </mat-card-header>

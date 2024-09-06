@@ -21,6 +21,7 @@ showAlert = true;
 isSubmitted? : boolean ;
 isExisting? : boolean ;
 nome = '';
+nomePesquisado = '';
 
 // Injeção do serviço de autenticação no construtor
 constructor(private authService: AuthService) { }
@@ -50,11 +51,20 @@ loadVagas(): void {
 vagaByEmpresa(nome:string):void{
   this.authService.getVagasByEmpresa(nome).subscribe(
     (data: any[]) => {
+      this.nomePesquisado = nome;
       this.vagas = data;
       this.isLoading = false;
     },
     error =>{
-      console.error('Erro ao carregar vagas:', error);
+      this.isSubmitted = true;
+      if(error.message = 'Http failure response for https://localhost:7083/api/v1/jobApplication/vagas/nomeEmpresa?nome=: 400 OK'){
+        console.error('Erro : ',error.message);
+        this.confirmedCandidatura = 'A empresa não existe'
+      }
+      else{
+        console.error('Erro inesperado');
+      }
+
     }
 
   )

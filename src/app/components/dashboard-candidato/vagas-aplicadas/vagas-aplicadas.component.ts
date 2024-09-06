@@ -12,6 +12,7 @@ export class VagasAplicadasComponent {
 text = '';
 candidatura :Candidatura[] = [];
 isLoading: boolean = true;
+isDelete = false;
  constructor(private authService: AuthService) { }
 
  ngOnInit(){
@@ -35,8 +36,7 @@ isLoading: boolean = true;
     );
   }
   deletCandidatura(id : number):void{
-    if(confirm('Tem certeza de que deseja excluir sua candidatura ?'))
-      {
+  this.isDelete = true;
     this.authService.deleteCandidatura(id).subscribe(
      ()=>{
       this.candidatura = this.candidatura.filter( c => c.id !== id);
@@ -48,4 +48,4 @@ isLoading: boolean = true;
     )
   }
 }
-}
+

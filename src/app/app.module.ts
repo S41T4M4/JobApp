@@ -34,6 +34,7 @@ import { AlertsComponent } from './components/alerts/alerts.component';
 import { AlertModule } from '@coreui/angular';
 import { NgConfirmModule} from 'ng-confirm-box';
 import { BoxConfirmComponent } from './components/box-confirm/box-confirm.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { BoxConfirmComponent } from './components/box-confirm/box-confirm.compon
     StatusPipe,
     WrongPageComponent,
     AlertsComponent,
-    BoxConfirmComponent
+    BoxConfirmComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
